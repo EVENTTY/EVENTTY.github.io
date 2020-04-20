@@ -15,7 +15,7 @@ Enquiring and booking is as simple as reaching us on one of the following:
 > eventty@mailbox.org
 
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
-> 0404103010
+> 0404 103 010
 
 <i class="fas fa-pen-square"></i>   **Get a quote** by filling in our easy to use Contact Form:
 

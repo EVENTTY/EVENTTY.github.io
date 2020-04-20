@@ -2,7 +2,7 @@
 title: "Configuration"
 permalink: /docs/configuration/
 excerpt: "Settings for configuring and customizing the theme."
-last_modified_at: 2018-11-25T19:42:42-05:00
+last_modified_at: 2019-10-04T10:54:48-04:00
 toc: true
 ---
 
@@ -134,6 +134,12 @@ _Example:_ `title_separator: "|"` would produce page titles like `Sample Page | 
 **Note:** Long site titles have been known to break the masthead layout. Avoid adding a long "tagline" to the title prevent this from happening eg. `My Awesome Site is the Best Because I Say So".
 {: .notice--warning}
 
+### Site subtitle
+
+A short tagline that appears below the title in site masthead.
+
+_Example:_ `subtitle: "Version 2.0"`
+
 ### Site name
 
 Used to assign a site author. Don't worry, you can override the site author with different ones on specific posts, pages, or collection documents.
@@ -223,6 +229,27 @@ header:
   <figcaption>Example of teaser images found in the related posts module.</figcaption>
 </figure>
 
+### Site masthead logo
+
+To insert a logo before the site title, place a graphic in the `/assets/images/` directory and add the filename to `_config.yml`:
+
+```yaml
+logo: "/assets/images/88x88.png"
+```
+
+<figure>
+  <img src="{{ '/assets/images/mm-masthead-logo.png' | relative_url }}" alt="masthead with logo and custom title">
+  <figcaption>Example of masthead with logo and custom title.</figcaption>
+</figure>
+
+### Site masthead title
+
+By default your site title is used in the masthead. You can override this text by adding the following to your `_config.yml`:
+
+```yaml
+masthead_title: "My Custom Title"
+```
+
 ### Breadcrumb navigation (beta)
 
 Enable breadcrumb links to help visitors better navigate deep sites. Because of the fragile method of implementing them they don't always produce accurate links reliably. For best results:
@@ -258,16 +285,21 @@ defaults:
 
 To disable reading time for a post, add `read_time: false` its YAML Front Matter to override what was set in `_config.yml`.
 
+`words_per_minute` can also be adjusted per-page basis by adding to its YAML Front Matter. This is useful for sites with multi-lingual content where you'd like specify a different value from the site config.
+
+```yaml
+words_per_minute: 250
+```
+
 ### Comments
 
-[**Disqus**](https://disqus.com/), [**Discourse**](https://www.discourse.org/), [**Facebook**](https://developers.facebook.com/docs/plugins/comments), **Google+**, [**utterances**](https://utteranc.es/), and static-based commenting via [**Staticman**](https://staticman.net/) are built into the theme. First set the comment provider you'd like to use:
+[**Disqus**](https://disqus.com/), [**Discourse**](https://www.discourse.org/), [**Facebook**](https://developers.facebook.com/docs/plugins/comments), [**utterances**](https://utteranc.es/), and static-based commenting via [**Staticman**](https://staticman.net/) are built into the theme. First set the comment provider you'd like to use:
 
 | Name             | Comment Provider          |
 | ---------------- | ------------------------- |
 | **disqus**       | Disqus                    |
 | **discourse**    | Discourse                 |
 | **facebook**     | Facebook Comments         |
-| **google-plus**  | Google+ Comments          |
 | **staticman_v2** | Staticman v2              |
 | **staticman**    | Staticman v1 (deprecated) |
 | **utterances**   | utterances                |
@@ -349,6 +381,7 @@ comments:
   provider: "utterances"
   utterances:
     theme: "github-light" # "github-dark"
+    issue_term: "pathname"
 ```
 
 #### Static-based comments via Staticman
@@ -370,7 +403,19 @@ Transform user comments into `_data` files that live inside of your GitHub repos
 
 ###### Staticman v3
 
-Due to the support for GitLab, the URL scheme has been changed.  Bewteen `v3` and `/entry`, one needs to input a Git service provider (either `github` or `gitlab`).  Apart from that, the setup for GitHub remains the same.
+Due to the [support for GitLab](https://github.com/eduardoboucas/staticman/pull/219), the URL scheme has been changed.  Between `v3/entry/` and `/{your Git username}`, one needs to input a Git service provider (either `github` or `gitlab`).  For example
+
+    https://{your Staticman v3 API}/v3/entry/github/{your Git username}/{your repository name}/...
+
+```yaml
+# _config.yml (defaults)
+repository  : # Git username/repo-name e.g. "mmistakes/minimal-mistakes"
+comments:
+  provider  : "staticman_v2"
+  staticman:
+    branch    : "master"
+    endpoint  : https://{your Staticman v3 API}/v3/entry/github/
+```
 
 ###### Staticman v2
 
@@ -488,7 +533,7 @@ To enable site-wide search add `search: true` to your `_config.yml`.
 
 #### Lunr (default)
 
-The default search uses [**Lunr**](https://lunrjs.com/) to build a search index of all your documents. This method is 100% compatible with sites hosted on GitHub Pages.
+The default search uses [**Lunr**](https://lunrjs.com/) to build a search index of all post and your documents in collections. This method is 100% compatible with sites hosted on GitHub Pages.
 
 **Note:** Only the first 50 words of a post or page's body content is added to the Lunr search index. Setting `search_full_content` to `true` in your `_config.yml` will override this and could impact page load performance.
 {: .notice--warning}
@@ -644,7 +689,7 @@ twitter:
 
 And if I assign `@mmistakes` as an author account it will appear in the Twitter Card along with `@mmistakes-theme`, attributed as a creator of the page being shared.
 
-**Note**: You need to [apply for Twitter Cards](https://dev.twitter.com/docs/cards) and validate they're working on your site before they will begin showing up.
+**Note**: You need to validate cards are working and have Twitter [approve Player Cards](https://developer.twitter.com/en/docs/tweets/optimize-with-cards/overview/player-card) before they will begin showing up.
 {: .notice--warning}
 
 ##### Facebook Open Graph
@@ -702,10 +747,9 @@ social:
   name:  # If the user or organization name differs from the site's name
   links:
     - "https://twitter.com/yourTwitter"
-    - "https://facebook.com/yourFacebook"
+    - "https://www.facebook.com/yourFacebook"
     - "https://instagram.com/yourProfile"
     - "https://www.linkedin.com/in/yourprofile"
-    - "https://plus.google.com/your_profile"
 ```
 
 #### Analytics
@@ -764,7 +808,7 @@ Author links are all optional, include the ones you want visible under the `auth
 author:
   name: "Your Name"
   avatar: "/assets/images/bio-photo.jpg"
-  bio: "I am an amazing person."
+  bio: "I am an **amazing** person." # Note: Markdown is allowed
   location: "Somewhere"
   links:
     - label: "Made Mistakes"
@@ -822,7 +866,7 @@ Again nothing out of the ordinary here as the theme adheres to the defaults used
 
 ## Front Matter Defaults
 
-To save yourself time setting [Front Matter Defaults](https://jekyllrb.com/docs/configuration/#front-matter-defaults) for posts, pages, and collections is the way to go. Sure you can assign layouts and toggle settings like **reading time**, **comments**, and **social sharing** in each file, but that's not ideal.
+To save yourself time setting [Front Matter Defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) for posts, pages, and collections is the way to go. Sure you can assign layouts and toggle settings like **reading time**, **comments**, and **social sharing** in each file, but that's not ideal.
 
 Using the `default` key in `_config.yml` you could set the layout and enable author profiles, reading time, comments, social sharing, and related posts for all posts --- in one shot.
 
@@ -890,12 +934,12 @@ The paginator only works on files with name `index.html`. To use pagination in a
 paginate_path: /recent/page:num/
 ```
 
-**Please note:** When using Jekyll's default [pagination plugin](http://jekyllrb.com/docs/pagination/) `paginator.posts` can only be called once. If you're looking for something more powerful that can paginate category, tag, and collection pages I suggest [**jekyll-paginate-v2**](https://github.com/sverrirs/jekyll-paginate-v2).
+**Please note:** When using Jekyll's default [pagination plugin](https://jekyllrb.com/docs/pagination/) `paginator.posts` can only be called once. If you're looking for something more powerful that can paginate category, tag, and collection pages I suggest [**jekyll-paginate-v2**](https://github.com/sverrirs/jekyll-paginate-v2).
 {: .notice--info}
 
 ### Timezone
 
-This sets the timezone environment variable, which Ruby uses to handle time and date creation and manipulation. Any entry from the [IANA Time Zone Database](http://en.wikipedia.org/wiki/List_of_tz_database_time_zones) is valid. The default is the local time zone, as set by your operating system.
+This sets the timezone environment variable, which Ruby uses to handle time and date creation and manipulation. Any entry from the [IANA Time Zone Database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) is valid. The default is the local time zone, as set by your operating system.
 
 ```yaml
 timezone: America/New_York
@@ -911,14 +955,12 @@ When hosting with GitHub Pages a small [set of gems](https://pages.github.com/ve
 | [jekyll-sitemap][jekyll-sitemap] | Jekyll plugin to silently generate a sitemaps.org compliant sitemap for your Jekyll site. |
 | [jekyll-gist][jekyll-gist] | Liquid tag for displaying GitHub Gists in Jekyll sites. |
 | [jekyll-feed][jekyll-feed] | A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts. |
-| [jemoji][jemoji] | GitHub-flavored emoji plugin for Jekyll. |
 | [jekyll-include-cache][jekyll-include-cache] | Liquid tag that caches Liquid includes. |
 
 [jekyll-paginate]: https://github.com/jekyll/jekyll-paginate
 [jekyll-sitemap]: https://github.com/jekyll/jekyll-sitemap
 [jekyll-gist]: https://github.com/jekyll/jekyll-gist
 [jekyll-feed]: https://github.com/jekyll/jekyll-feed
-[jemoji]: https://github.com/jekyll/jemoji
 [jekyll-include-cache]: https://github.com/benbalter/jekyll-include-cache
 
 If you're hosting elsewhere then you don't really have to worry about what is whitelisted as you are free to include whatever [Jekyll plugins](https://jekyllrb.com/docs/plugins/) you desire.
@@ -986,6 +1028,30 @@ jekyll-archives:
 
 **Note:** The `archive-taxonomy` layout used by jekyll-archives is provided with the theme and can be found in the `_layouts` folder.
 {: .notice--info}
+
+<div class="notice--success" markdown="1">
+
+<h4 class="no_toc"><i class="fas fa-lightbulb"></i> Tip</h4>
+
+To apply [Front Matter defaults](https://jekyllrb.com/docs/configuration/front-matter-defaults/) to pages generated by the `jekyll-archives` plugin, you can specify a scope of an empty `path` and a `type` of either `tag` or `category`.
+
+For example, the following configuration enables author profile on tag archives and disables comments on category archives.
+
+```yaml
+defaults:
+  - scope:
+      path: ""
+      type: tag
+    values:
+      author_profile: true
+  - scope:
+      path: ""
+      type: category
+    values:
+      comments: false
+```
+
+</div>
 
 ## HTML compression
 

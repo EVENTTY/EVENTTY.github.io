@@ -5,7 +5,7 @@ header:
   image: "images/about.jpg"
 
 ---
-Boasting over **8 years of experience**, Cozy Wolf Events is guided by unmatched talent and prides itself on professionalism.
+Boasting over **8 years of experience**, Eventty is guided by unmatched talent and prides itself on professionalism.
 
 It is our mission to be as **courteous** and **helpful** as possible to reach your goals for your event.
 
@@ -19,7 +19,7 @@ We understand **communication** is key, that's why we'll take careful steps to c
 
 # Experience
 
-Cozy Wolf Events has proudly been serving the Central Coast community for nearly a decade through providing music and entertainment for organisations such as:
+Eventty has proudly been serving the Central Coast community for nearly a decade through providing music and entertainment for organisations such as:
 
 <figure class="third">
 	<img src="/images/1.png">

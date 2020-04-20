@@ -12,7 +12,7 @@ header:
 Enquiring and booking is as simple as reaching us on one of the following:
 
 <i class="fas fa-envelope-square"></i>       **Email** us at:
-> cozywolfevents@pm.me
+> eventty@mailbox.org
 
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
 > 0404103010

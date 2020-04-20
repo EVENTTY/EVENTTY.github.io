@@ -103,15 +103,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "Cozy Wolf Events"
+  name             : "Eventty"
   avatar           : "/images/minilogo.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "Events made simple."
   location         : "Central Coast, NSW"
   email            :
   links:
-    - label: "cozywolfevents@pm.me"
+    - label: "eventty@mailbox.org"
       icon: "fas fa-fw fa-envelope"
-      url: mailto:CozyWolfEvents@pm.me
+      url: mailto:eventty@mailbox.org
       # url: mailto:your.name@email.com
     - label: "0404103010"
       icon: "fas fa-fw fa-phone"

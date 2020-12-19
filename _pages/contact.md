@@ -12,7 +12,7 @@ header:
 Enquiring and booking is as simple as reaching us on one of the following:
 
 <i class="fas fa-envelope-square"></i>       **Email** us at:
-> eventty@mailbox.org
+> eventty@pm.me
 
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
 > 0404 103 010

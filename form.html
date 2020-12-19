@@ -1,68 +1,26 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="contact form example">
-  <title>Contact Form</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 </head>
-
 <body>
-  <h2 class="content-head is-center">Contact Us</h2>
-  <aside>
-       <p>
-           We would love to hear from you! </p>
-           <p>Please use this <b>Contact Form</b>
-           to send us a message.
-       </p>
-   </aside>
+<script src="https://unpkg.com/tripetto-runner-foundation"></script>
+<script src="https://unpkg.com/tripetto-runner-autoscroll"></script>
+<script src="https://unpkg.com/tripetto-services"></script>
+<script>
+var tripetto = TripettoServices.init({ token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiZlI2UUdKczVOYk44UUl0VVAxcTRSd2lZYUF5UE9ZWkdXTWNHQ3FSOWVMUT0iLCJkZWZpbml0aW9uIjoiK2RaMnZTODJGRkZLV1FiOE1BM0hZNWMrbEtzcDgxVi9KcVB5cFNRcFBuRT0iLCJ0eXBlIjoiY29sbGVjdCJ9.w6cdsRgo0RXREijyLKMuYZBZARtmy90hJLdg_lPYnXw" });
 
-<!-- START HERE -->
-   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <!-- Style The Contact Form How Ever You Prefer -->
-   <link rel="stylesheet" href="style.css">
-
-  <form class="gform pure-form pure-form-stacked" method="POST" data-email="eventty@pm.me"
-  action="https://script.google.com/macros/s/AKfycbyz7q1do2eh_foQxCJjX2pHxiR-044P205qhMu06wzZ6UvECvc/exec">
-    <!-- change the form action to your script url -->
-
-    <div class="form-elements">
-      <fieldset class="pure-group">
-        <label for="name">Name: </label>
-        <input id="name" name="name" placeholder="Your name" />
-      </fieldset>
-
-      <fieldset class="pure-group">
-        <label for="email">Email Address:</label>
-        <input id="email" name="email" type="email" value=""
-        required placeholder="your.name@email.com"/>
-      </fieldset>
-
-      <fieldset class="pure-group">
-        <label for="message">Tell us about your event: </label>
-        <textarea id="message" name="message" rows="10"
-        placeholder="Date, time, location, special requirements, etc."></textarea>
-      </fieldset>
-
-      <button class="button-success pure-button button-xlarge">
-        <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
-    </div>
-
-    <!-- Customise the Thankyou Message People See when they submit the form: -->
-    <div class="thankyou_message" style="display:none;">
-      <h2>Thank you for contacting us!
-          We will get back to you soon.</h2>
-    </div>
-
-  </form>
-
-  <!-- Submit the Form to Google Using "AJAX" -->
-  <script data-cfasync="false" src="form-submission-handler.js"></script>
-<!-- END -->
-
-<script data-cfasync="false" type="text/javascript" src="form-submission-handler.js"></script>
-
-
+TripettoAutoscroll.run({
+    element: document.body,
+    definition: tripetto.definition,
+    styles: tripetto.styles,
+    l10n: tripetto.l10n,
+    locale: tripetto.locale,
+    translations: tripetto.translations,
+    attachments: tripetto.attachments,
+    onSubmit: tripetto.onSubmit
+});
+</script>
 </body>
 </html>

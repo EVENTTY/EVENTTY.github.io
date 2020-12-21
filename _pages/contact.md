@@ -19,6 +19,6 @@ header:
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
 > 0404 103 010
 
-<i class="fas fa-pen-square"></i>   **Get a quote** by filling in our easy to use Contact Form:
+<i class="fas fa-pen-square"></i>   **Get a quote** by completing our easy to use Contact Form:
 
 > [Contact Form](https://eventty.github.io/form.html "Contact Form")

@@ -4,6 +4,7 @@ permalink:  /services/
 header:
   image: "images/services.png"
 ---
+<br />
 # Weddings, Parties and Events
 
 - Meeting your music requirements is easily achieved by a free **face-to-face, video or phone consultation** to outline the finer details of your event in person

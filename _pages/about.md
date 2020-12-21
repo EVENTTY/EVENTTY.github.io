@@ -23,13 +23,13 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 
 <figure class="third">
 	<img src="/images/a.jpg">
-	<img src="/images/c.jpg">
+	<img src="/images/8.png">
 	<img src="/images/23.jpg">
 </figure>
 <figure class="third">
-	<img src="/images/4.png">
+	<img src="/images/7.jpg">
 	<img src="/images/6.png">
-	<img src="/images/5.jpg">
+	<img src="/images/9.jpg">
 </figure>
 <figure class="third">
 	<img src="/images/1.png">
@@ -45,7 +45,7 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 As well as supporting world-class artists such as:
 
 <figure class="third">
-	<img src="/images/7.jpg">
-	<img src="/images/8.png">
-	<img src="/images/9.jpg">
+	<img src="/images/4.png">
+	<img src="/images/c.png">
+	<img src="/images/5.jpg">
 </figure>

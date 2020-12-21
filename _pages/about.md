@@ -1,5 +1,5 @@
 ---
-title: <i class="fas fa-info"></i> "About us"
+title: "<i class="fas fa-info"></i>  About us"
 permalink:  /about/
 header:
   image: "images/about.jpg"

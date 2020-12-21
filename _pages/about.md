@@ -14,7 +14,7 @@ It is our mission to be as **courteous** and **helpful** as possible to reach yo
 
 With our **industry-standard equipment** and **expertise**, we aim to provide music that is **customised** to your taste and preference.
 
-We understand **communication** is key, that's why we'll take careful steps to coordinate with you to make your event run as smoothly as possible. We are easily contactable through calls, emails, text or scheduled meeting.
+We understand **communication** is key, that's why we'll take careful steps to coordinate with you to make your event run as smoothly as possible. We are easily contactable through calls, emails, text, or scheduled meetings.
 
 ### You bring the crowd and we'll get them dancing!
 

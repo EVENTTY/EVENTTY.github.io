@@ -109,9 +109,9 @@ author:
   location         : "Central Coast, NSW"
   email            :
   links:
-    - label: "eventty@dismail.de"
+    - label: "eventty@mailbox.org"
       icon: "fas fa-fw fa-envelope"
-      url: mailto:eventty@dismail.de
+      url: mailto:eventty@mailbox.org
       # url: mailto:your.name@email.com
     - label: "0404 103 010"
       icon: "fas fa-fw fa-phone"

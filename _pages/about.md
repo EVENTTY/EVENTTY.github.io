@@ -22,7 +22,7 @@ We understand **communication** is key, that's why we'll take careful steps to c
 Eventty has proudly been serving the Central Coast community for nearly a decade through providing music and entertainment for organisations such as:
 
 <figure class="third">
-	<img src="/images/a.png">
+	<img src="/images/a.jpg">
 	<img src="/images/c.jpg">
 	<img src="/images/23.jpg">
 </figure>
@@ -32,7 +32,7 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 	<img src="/images/5.jpg">
 </figure>
 <figure class="third">
-	<img src="/images/1.jpg">
+	<img src="/images/1.png">
 	<img src="/images/2.jpg">
 	<img src="/images/3.jpg">
 </figure>

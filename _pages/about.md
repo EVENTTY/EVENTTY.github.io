@@ -42,7 +42,7 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 	<img src="/images/f.png">
 </figure>
 
-As well as functioning as support acts for world-class artists such as:
+As well as supporting world-class artists such as:
 
 <figure class="third">
 	<img src="/images/7.jpg">

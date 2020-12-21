@@ -9,7 +9,7 @@ header:
       url: "https://eventty.github.io/form.html"
 ---
 
-## Enquiring and booking is as simple as contacting us on one of the following:
+## Enquiring and booking is as simple as contacting us through one of the following:
 
 <br>
 

@@ -14,10 +14,10 @@ header:
 <br>
 
 <i class="fas fa-envelope-square"></i>       **Email** us at:
-> eventty@dismail.de
+> <eventty@dismail.de>
 
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
-> 0404 103 010
+> [0404 103 010]
 
 <i class="fas fa-pen-square"></i>   **Get a quote** by completing our easy to use Contact Form:
 

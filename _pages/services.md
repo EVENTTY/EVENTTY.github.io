@@ -6,6 +6,8 @@ header:
 ---
 ## Weddings, Parties and Events
 
+<br>
+
 - Meeting your music requirements is easily achieved by a free **face-to-face, video or phone consultation** to outline the finer details of your event in person
 
 - **Song selection** is made as easy as possible! We're flexible, so it's as simple as sending us an email outlining your favourite songs, or linking us to your playlist on your preferred music streaming service (Spotify, Apple Music, Google Play or other)

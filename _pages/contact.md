@@ -11,6 +11,8 @@ header:
 
 ## Enquiring and booking is as simple as reaching us on one of the following:
 
+<pre>
+
 <i class="fas fa-envelope-square"></i>       **Email** us at:
 > eventty@dismail.de
 

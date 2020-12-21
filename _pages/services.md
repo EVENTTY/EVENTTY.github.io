@@ -4,7 +4,6 @@ permalink:  /services/
 header:
   image: "images/services.png"
 ---
-<br />
 
 ## Weddings, Parties and Events
 

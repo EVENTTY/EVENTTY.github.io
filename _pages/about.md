@@ -28,7 +28,7 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 </figure>
 <figure class="third">
 	<img src="/images/e.png">
-	<img src="/images/6.png">
+	<img src="/images/c.jpg">
 	<img src="/images/9.jpg">
 </figure>
 <figure class="third">
@@ -46,6 +46,6 @@ As well as supporting world-class artists such as:
 
 <figure class="third">
 	<img src="/images/4.png">
-	<img src="/images/c.jpg">
+	<img src="/images/6.png">
 	<img src="/images/5.jpg">
 </figure>

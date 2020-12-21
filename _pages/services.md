@@ -14,4 +14,4 @@ header:
 
 - **Song requests** are up to your discretion, that gives _you_ the power to decide what wants to be heard at your event. We expect that your guests will appreciate a personalised touch to the music, but we also respect that the music be tailored to _your taste_
 
-- With setup and testing of equipment being completed prior to your guests arrival, you can rest assured knowing there wont be any nasty surprises on your special night
+- With setup and testing of equipment being completed prior to your guests arrival, you can rest assured knowing there will be **no nasty surprises** on your special night

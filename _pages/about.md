@@ -22,7 +22,7 @@ We understand **communication** is key, that's why we'll take careful steps to c
 
 # Experience
 
-<br>
+<br/>
 
 Eventty has proudly been serving the Central Coast community for nearly a decade through providing music and entertainment for organisations such as:
 

@@ -9,7 +9,7 @@ header:
       url: "https://eventty.github.io/form.html"
 ---
 
-Enquiring and booking is as simple as reaching us on one of the following:
+## Enquiring and booking is as simple as reaching us on one of the following:
 
 <i class="fas fa-envelope-square"></i>       **Email** us at:
 > eventty@dismail.de

@@ -113,9 +113,9 @@ author:
       icon: "fas fa-fw fa-envelope"
       url: mailto:eventty@dismail.de
       # url: mailto:your.name@email.com
-    - label: "0404 103 010"
+    - label: "[0404 103 010](tel:0404103010)"
       icon: "fas fa-fw fa-phone"
-      url: "0404 103 010"
+      url: "[0404 103 010](tel:0404103010)"
       # url: "https://your-website.com"
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"

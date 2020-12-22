@@ -31,13 +31,13 @@ Eventty has proudly been serving the Central Coast community for nearly a decade
 
 <figure class="third">
 	<img src="/images/a.jpg">
-	<img src="/images/d.png">
 	<img src="/images/23.jpg">
+	<img src="/images/d.png">
 </figure>
 <figure class="third">
 	<img src="/images/c.jpg">
-	<img src="/images/e.png">
 	<img src="/images/f.png">
+	<img src="/images/e.png">
 </figure>
 <figure class="third">
 	<img src="/images/1.png">

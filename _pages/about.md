@@ -1,5 +1,5 @@
 ---
-title: "About us"
+title: "About Us"
 permalink:  /about/
 header:
   image: "images/about.jpg"

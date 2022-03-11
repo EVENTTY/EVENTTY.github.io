@@ -15,7 +15,7 @@ With our **industry-standard equipment** and **expertise**, we aim to provide mu
 
 We understand **communication** is key, that's why we'll take careful steps to coordinate with you to make your event run as smoothly as possible. We are easily contactable through calls, emails, text, or scheduled meetings.
 
-### You bring the crowd and we'll get them dancing!
+### You bring the crowd, and we'll get them dancing!
 
 <br>
 

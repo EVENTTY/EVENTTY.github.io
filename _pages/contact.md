@@ -6,7 +6,7 @@ header:
   overlay_filter: 0.5 # same as adding an opacity of 0.5 to a black background
   actions:
     - label: "Book Now!"
-      url: "https://eventty.github.io/form.html"
+      url: "eventty@dismail.de"
 ---
 
 ## Enquiring and booking is as simple as contacting us through one of the following:
@@ -18,7 +18,3 @@ header:
 
 <i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
 > [0404 103 010](tel:0404103010)
-
-<i class="fas fa-pen-square"></i>   **Get a quote** by completing our easy to use Contact Form:
-
-> [Contact Form](https://eventty.github.io/form.html "Contact Form")

@@ -109,9 +109,9 @@ author:
   location         : "Central Coast, NSW"
   email            :
   links:
-    - label: "eventty@airmail.cc"
+    - label: "eventty@icloud.com"
       icon: "fas fa-fw fa-envelope"
-      url: mailto:eventty@airmail.cc
+      url: mailto:eventty@icloud.com
       # url: mailto:your.name@email.com
     - label: "0404 103 010"
       icon: "fas fa-fw fa-phone"

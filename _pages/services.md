@@ -8,12 +8,12 @@ header:
 
 <br>
 
-- Meeting your music requirements is easily achieved by a free **face-to-face, video, or phone consultation** to outline the finer details of your event in person
+- **Personalised** and free consultations in person, via video call, or over the phone to discuss your event's music needs.
 
-- **Song selection** is made as easy as possible! We're flexible, so it's as simple as sending us an email outlining your favourite songs, or linking us to your playlist on your preferred music streaming service (Spotify, Apple Music, Google Play, or other)
+- **Song selection** means you can choose your favorite songs by emailing us or sharing your playlist from Spotify, Apple Music, Google Play, or other platforms.
 
-- Our **music library** is comprised of over _15, 000 songs_, and we take special care to make sure they are edited free of explicit content to keep things family-friendly if need be
+- Our **music library** allows you to enjoy access to over 15,000 edited songs in our music library, ensuring a family-friendly atmosphere.
 
-- **Song requests** are up to your discretion, which gives _you_ the power to decide what wants to be heard at your event. We expect that your guests will appreciate a personalised touch to the music, but we also respect that the music be tailored to _your taste_
+- **Song requests** are up to you, which means you have full control over the music, allowing you to curate the mood of your event to your liking.
 
-- With equipment setup and testing completed prior to your guests' arrival, you can rest assured knowing there will be **no nasty surprises** on your special night
+- **Rest assured** with our equipment set up and tested before your guests arrive, guaranteeing a smooth event without any unexpected issues.

@@ -15,6 +15,3 @@ header:
 
 <i class="fas fa-envelope-square"></i>       **Email** us at:
 > <eventty@icloud.com>
-
-<i class="fas fa-phone-square"></i>      **Phone** or **text** us at:
-> [0404 103 010](tel:0404103010)

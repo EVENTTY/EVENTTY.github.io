@@ -7,13 +7,13 @@ header:
 
 <br>
 
-Boasting over **10 years of experience**, Eventty is guided by unmatched talent and prides itself on professionalism.
+Eventty brings over **10 years of experience**, guided by talent and professionalism.
 
-It is our mission to be as **courteous** and **helpful** as possible to reach your goals for your event.
+Our mission is to be as **courteous** and **helpful** as possible to to meet your event's goals.
 
-With our **industry-standard equipment** and **expertise**, we aim to provide music that is **customised** to your taste and preference.
+Using **industry-standard** equipment and **expertise**, we customise music to your taste.
 
-We understand **communication** is key, that's why we'll take careful steps to coordinate with you to make your event run as smoothly as possible. We are easily contactable through calls, emails, text, or scheduled meetings.
+**Communication** is key, and we coordinate closely with you for a smooth event, reachable via calls, emails, text, or scheduled meetings.
 
 ### You bring the crowd, and we'll get them dancing!
 
@@ -27,7 +27,7 @@ We understand **communication** is key, that's why we'll take careful steps to c
 
 <br>
 
-Eventty has proudly been serving the Central Coast community for nearly a decade through providing music and entertainment for organisations such as:
+Eventty has proudly served the Central Coast community for over a decade, providing music and entertainment for organisations including:
 
 <figure class="third">
 	<img src="/images/a.jpg">

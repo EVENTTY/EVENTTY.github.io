@@ -9,7 +9,7 @@ header:
       url: "#form" # Link to a form section instead of mailto link
 ---
 
-## Enquiring and booking is as simple as contacting us:
+## Enquiring and booking is simple:
 
 <br>
 

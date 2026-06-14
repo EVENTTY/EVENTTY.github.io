@@ -1,0 +1,239 @@
+# ============================================================================
+# EVENTTY — Jekyll Site Configuration
+# ============================================================================
+# This file controls your entire site. Edit carefully — a YAML typo will
+# break the build. Always test with `bundle exec jekyll serve` before pushing.
+#
+# YAML syntax tips:
+#   - Indentation matters! Use spaces, not tabs.
+#   - A colon + space (": ") starts a key-value pair.
+#   - A hash (#) starts a comment — everything after it is ignored.
+# ============================================================================
+
+
+# ── Theme ────────────────────────────────────────────────────────────────────
+# Minimal Mistakes skin. Options:
+#   "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+minimal_mistakes_skin    : "dark"
+
+
+# ── Site Settings ────────────────────────────────────────────────────────────
+locale                   : "en-US"
+title                    : "Eventty"
+title_separator          : "-"
+name                     : "Eventty - Weddings, Parties and Events"
+description              : "Eventty creates unforgettable weddings, parties, and events on the Central Coast, NSW. Professional event planning, styling, and coordination tailored to you."
+url                      : "https://eventty.org" # ← CHANGE THIS to your actual site URL (no trailing slash!)
+baseurl                  : "" # "" if site is at root, "/repo-name" if in a subfolder
+repository               : "https://eventty.org" # ← CHANGE THIS
+teaser                   : "/images/teaser.png" # Default thumbnail for post grid listings (500×300px)
+words_per_minute         : 200
+timezone                 : Australia/Sydney # Central Coast, NSW
+
+
+# ── Search ───────────────────────────────────────────────────────────────────
+# Built-in Lunr search — works entirely in the browser, no API key needed.
+# Adds a sleek search icon to your top navigation.
+search                   : false
+search_full_content      : true # Search full text, not just titles
+search_provider          : lunr # Only option that works on GitHub Pages without an API key
+
+
+# ── SEO Verification ────────────────────────────────────────────────────────
+# Get these from Google Search Console and Bing Webmaster Tools when ready.
+google_site_verification : # https://search.google.com/search-console
+bing_site_verification   : # https://www.bing.com/webmasters
+
+
+# ── Social Sharing / Open Graph ─────────────────────────────────────────────
+og_image                 : "/images/og-image.png" # 1200×630px image for social media previews
+
+twitter:
+  username               :
+
+facebook:
+  username               :
+  app_id                 :
+  publisher              :
+
+social:
+  type                   : Organization # Business, not a person — helps Google structured data
+  name                   : "Eventty"
+  links:
+    # Add your real social profile URLs here when ready:
+    # - "https://facebook.com/your-page"
+    # - "https://instagram.com/your-profile"
+
+
+# ── Site Author ──────────────────────────────────────────────────────────────
+author:
+  name             : "Eventty"
+  avatar           : "/images/minilogo.png"
+  bio              : "Weddings, Parties and Events."
+  location         : "Central Coast, NSW"
+  email            :
+  links:
+    - label: "Contact Us"
+      icon: "fas fa-fw fa-envelope"
+      url: "/contact/"
+    # Uncomment and add your URLs when ready:
+    # - label: "Facebook"
+    #   icon: "fab fa-fw fa-facebook-square"
+    #   url: "https://facebook.com/your-page"
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
+    #   url: "https://instagram.com/your-profile"
+
+
+# ── Site Footer ──────────────────────────────────────────────────────────────
+footer:
+  links:
+    # Uncomment and add your URLs when ready:
+    # - label: "Facebook"
+    #   icon: "fab fa-fw fa-facebook-square"
+    #   url: "https://facebook.com/your-page"
+    # - label: "Instagram"
+    #   icon: "fab fa-fw fa-instagram"
+    #   url: "https://instagram.com/your-profile"
+
+
+# ── Reading Files ────────────────────────────────────────────────────────────
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - vendor
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - assets/js/plugins
+  - assets/js/_main.js
+  - assets/js/vendor
+  - Capfile
+  - CHANGELOG
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json
+  - Rakefile
+  - README
+  - tmp
+  - /docs
+  - /test
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+
+# ── Conversion ───────────────────────────────────────────────────────────────
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+
+# ── Markdown Processing ─────────────────────────────────────────────────────
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+
+# ── Sass/SCSS ────────────────────────────────────────────────────────────────
+sass:
+  sass_dir: _sass
+  style: compressed # Minifies CSS for production
+
+
+# ── Outputting ───────────────────────────────────────────────────────────────
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /page:num/
+
+
+# ── Plugins ──────────────────────────────────────────────────────────────────
+# Only plugins listed here AND in whitelist will run on GitHub Pages.
+# Removed jemoji and jekyll-gist (unused → faster builds, snappier loading).
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-include-cache
+
+whitelist:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-include-cache
+
+
+# ── Archives ─────────────────────────────────────────────────────────────────
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+
+# ── HTML Compression ────────────────────────────────────────────────────────
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
+
+# ── Defaults ─────────────────────────────────────────────────────────────────
+# These set default front matter values so you don't have to repeat them
+# in every page/post file. Individual files can override these values.
+defaults:
+  # Blog posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: false    # "X min read" not relevant for events business
+      share: true
+      related: true
+
+  # Static pages (home, about, contact, etc.)
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: false # Full-width pages look sleeker and more professional
+
+
+# ── Future Features ──────────────────────────────────────────────────────────
+# Uncomment and configure these when you're ready:
+
+# Comments (Utterances — free, GitHub-based, privacy-friendly):
+# comments:
+#   provider: "utterances"
+#   utterances:
+#     theme: "github-dark"
+
+# Analytics (Google Analytics 4):
+# analytics:
+#   provider: "google"
+#   google:
+#     tracking_id: "G-XXXXXXXXXX"
+#     anonymize_ip: true

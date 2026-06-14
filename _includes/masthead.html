@@ -1,0 +1,27 @@
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <a class="site-title" href="{{ '/' | absolute_url }}">
+          <img src="/images/minilogo.png" width="32" height="32" alt="Eventty logo">
+          <span>Eventty</span>
+        </a>
+        <ul class="visible-links">
+          {%- for link in site.data.navigation.main -%}
+            {%- if link.url contains '://' -%}
+              {%- assign url = link.url -%}
+            {%- else -%}
+              {%- assign url = link.url | relative_url -%}
+            {%- endif -%}
+            <li class="masthead__menu-item{% if page.url == url or (url != '/' and page.url contains url) %} masthead__menu-item--active{% endif %}">
+              <a href="{{ url }}" {% if link.description %}title="{{ link.description }}"{% endif %}>{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+        <button class="greedy-nav__toggle hidden" type="button" aria-label="Toggle menu" onclick="document.querySelector('.visible-links').classList.toggle('open')">
+          <div class="navicon"></div>
+        </button>
+      </nav>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+/* ==========================================================================
+   Dark skin — Eventty Premium
+   ========================================================================== */
+
+/* Colors */
+$background-color: #0a0a0f !default;
+$text-color: #f2f2f5 !default;
+$primary-color: #c9a43a !default;
+$border-color: rgba(255,255,255,0.06) !default;
+$code-background-color: rgba(0,0,0,0.2) !default;
+$code-background-color-dark: rgba(0,0,0,0.3) !default;
+$form-background-color: rgba(255,255,255,0.03) !default;
+$footer-background-color: #111118 !default;
+$link-color: #c9a43a !default;
+$link-color-hover: #d4b24a !default;
+$link-color-visited: #b08d2e !default;
+$masthead-link-color: rgba(255,255,255,0.55) !default;
+$masthead-link-color-hover: #ffffff !default;
+$navicon-link-color-hover: rgba(255,255,255,0.08) !default;
+
+.author__urls.social-icons .svg-inline--fa,
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}
+
+.ais-search-box .ais-search-box--input {
+  background-color: $form-background-color;
+}

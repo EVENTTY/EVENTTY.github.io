@@ -1,0 +1,162 @@
+---
+layout: archive
+---
+
+<style>
+  .landing-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 7rem 1.5rem;
+  }
+  .hero-cta {
+    margin-top: 4rem;
+  }
+  .hero-cta .btn {
+    padding: var(--space-4) var(--space-10);
+    font-size: 1rem;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .landing-intro {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  .landing-intro h2 {
+    font-size: clamp(1.4rem, 3vw, 2.4rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+    margin-bottom: var(--space-5);
+    color: var(--text-primary);
+  }
+  .landing-intro p {
+    font-size: 1.05rem;
+    color: rgba(242, 242, 245, 0.6);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  .service-card {
+    background: var(--bg-glass);
+    border: 1px solid rgba(201, 164, 58, 0.08);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .service-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+  }
+  .service-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #c9a43a;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 0 0 2px 2px;
+  }
+  .service-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: rgba(201, 164, 58, 0.15);
+    background: var(--bg-glass-hover);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(201, 164, 58, 0.06);
+  }
+  .service-card:hover::after {
+    width: 50%;
+  }
+  .service-card__icon {
+    font-size: 2.2rem;
+    color: #c9a43a;
+    margin-bottom: var(--space-6);
+    display: block;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .service-card:hover .service-card__icon {
+    transform: scale(1.08);
+  }
+  .service-card__title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: var(--space-3);
+  }
+  .service-card__text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(242, 242, 245, 0.6);
+    margin: 0;
+  }
+  .service-card__metric {
+    display: inline-block;
+    margin-top: var(--space-5);
+    padding: 6px 14px;
+    background: rgba(201, 164, 58, 0.08);
+    border: 1px solid rgba(201, 164, 58, 0.15);
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #c9a43a;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .service-card:hover .service-card__metric {
+    background: rgba(201, 164, 58, 0.12);
+    border-color: rgba(201, 164, 58, 0.25);
+  }
+  @media (max-width: 500px) {
+    .landing-container { padding: 4rem 1rem; }
+  }
+</style>
+
+<div class="landing-container">
+
+  <div class="landing-intro reveal">
+    <h2>Premium DJ services for venues and events across the Central Coast</h2>
+    <p>Curated sound, professional equipment, and over a decade of experience delivering atmosphere that keeps guests coming back.</p>
+    <span class="accent-line"></span>
+  </div>
+
+  <div class="grid-4">
+    <div class="service-card reveal">
+      <i class="fas fa-gem service-card__icon"></i>
+      <h3 class="service-card__title">Weddings</h3>
+      <p class="service-card__text">Bespoke music curation from ceremony to last dance. Every moment timed to perfection.</p>
+      <span class="service-card__metric">200+ weddings</span>
+    </div>
+    <div class="service-card reveal">
+      <i class="fas fa-gift service-card__icon"></i>
+      <h3 class="service-card__title">Private Parties</h3>
+      <p class="service-card__text">Milestone birthdays, engagements, and celebrations with playlists built around your crowd.</p>
+      <span class="service-card__metric">All ages</span>
+    </div>
+    <div class="service-card reveal">
+      <i class="fas fa-music service-card__icon"></i>
+      <h3 class="service-card__title">Bars &amp; Venues</h3>
+      <p class="service-card__text">Atmospheric sets engineered for hospitality. Boost dwell time and repeat visits.</p>
+      <span class="service-card__metric">15k+ tracks</span>
+    </div>
+    <div class="service-card reveal">
+      <i class="fas fa-briefcase service-card__icon"></i>
+      <h3 class="service-card__title">Corporate Events</h3>
+      <p class="service-card__text">Polished, on-brand sound for launches, galas, and functions. Zero hassle, full compliance.</p>
+      <span class="service-card__metric">Fully insured</span>
+    </div>
+  </div>
+
+  <div class="hero-cta" style="text-align: center;">
+    <a href="/contact/" class="btn btn-accent">Discuss your event</a>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+# main links
+main:
+  - title: "About"
+    url: /about/
+  - title: "Services"
+    url: /services/
+  - title: "Photos"
+    url: /photos/
+  - title: "Contact"
+    url: /contact/
+
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  # - title: "Sitemap"
+  #   url: /sitemap/

@@ -3,58 +3,388 @@ layout: archive
 ---
 
 <style>
-  .landing-container {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 7rem 1.5rem;
+  /* ─── HERO ─────────────────────────────────────────────────────── */
+  .lp-hero {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9rem 1.5rem 6rem;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 164, 58, 0.12), transparent 70%),
+      radial-gradient(ellipse 60% 50% at 80% 100%, rgba(201, 164, 58, 0.06), transparent 70%),
+      var(--bg-primary);
   }
-  .hero-cta {
-    margin-top: 4rem;
+
+  /* Hero background image — vinyl/turntable photo, heavily dimmed for legibility */
+  .lp-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/images/about.jpg");
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.32;
+    filter: grayscale(30%) saturate(0.85) contrast(1.05);
+    pointer-events: none;
+    z-index: 0;
+    animation: heroSpin 120s linear infinite;
   }
-  .hero-cta .btn {
-    padding: var(--space-4) var(--space-10);
-    font-size: 1rem;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Warm amber color overlay to harmonize the image with the gold accent */
+  .lp-hero__bg-warm {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 100% 80% at 50% 30%, rgba(201, 164, 58, 0.10), transparent 70%),
+                linear-gradient(180deg, rgba(201, 164, 58, 0.04), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
   }
-  .landing-intro {
+
+  /* Stronger radial vignette so the image dissolves into darkness at edges */
+  .lp-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, transparent 0%, rgba(10, 10, 15, 0.4) 60%, var(--bg-primary) 95%),
+      linear-gradient(180deg, var(--bg-primary) 0%, transparent 15%, transparent 85%, var(--bg-primary) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  @keyframes heroSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  .lp-hero__inner {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    margin-bottom: 5rem;
+    max-width: 880px;
+    margin: 0 auto;
   }
-  .landing-intro h2 {
-    font-size: clamp(1.4rem, 3vw, 2.4rem);
+
+  /* Bottom fade so the hero image dissolves into the next section */
+  .lp-hero__inner::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -6rem;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 200px;
+    background: radial-gradient(ellipse 60% 100% at 50% 0%, rgba(201, 164, 58, 0.10), transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .lp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.95rem;
+    background: rgba(201, 164, 58, 0.08);
+    border: 1px solid rgba(201, 164, 58, 0.18);
+    border-radius: 100px;
+    font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: -0.035em;
-    line-height: 1.15;
-    margin-bottom: var(--space-5);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c9a43a;
+    margin-bottom: 2rem;
+  }
+  .lp-eyebrow__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #c9a43a;
+    box-shadow: 0 0 8px rgba(201, 164, 58, 0.6);
+  }
+
+  .lp-hero h1 {
+    font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+    line-height: 1.02;
+    margin: 0 0 1.5rem;
     color: var(--text-primary);
   }
-  .landing-intro p {
-    font-size: 1.05rem;
-    color: rgba(242, 242, 245, 0.6);
-    max-width: 520px;
-    margin: 0 auto;
-    line-height: 1.7;
+
+  .lp-hero h1 .gold {
+    background: linear-gradient(135deg, #d4b24a 0%, #c9a43a 50%, #b8932f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-style: italic;
+    font-weight: 500;
   }
-  .service-card {
-    background: var(--bg-glass);
-    border: 1px solid rgba(201, 164, 58, 0.08);
-    border-radius: var(--radius-lg);
-    padding: 3rem 2rem;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  .lp-hero__sub {
+    font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    color: rgba(242, 242, 245, 0.65);
+    line-height: 1.65;
+    max-width: 580px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .lp-hero__ctas {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3.5rem;
+  }
+
+  .lp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.95rem 1.6rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-decoration: none !important;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s var(--ease-out-expo);
+    min-height: 48px;
+    white-space: nowrap;
+  }
+
+  .lp-btn--primary {
+    background: #c9a43a;
+    color: #0a0a0f !important;
+  }
+  .lp-btn--primary:hover {
+    background: #d4b24a;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201, 164, 58, 0.25);
+  }
+
+  .lp-btn--ghost {
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary) !important;
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .lp-btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .lp-btn .lp-btn__arrow {
+    transition: transform 0.2s var(--ease-out-expo);
+  }
+  .lp-btn:hover .lp-btn__arrow {
+    transform: translateX(3px);
+  }
+
+  /* Scroll cue */
+  .lp-scroll-cue {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+  .lp-scroll-cue__line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(180deg, rgba(201, 164, 58, 0.6), transparent);
     position: relative;
     overflow: hidden;
+  }
+  .lp-scroll-cue__line::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: #c9a43a;
+    animation: scrollDot 2s ease-in-out infinite;
+  }
+  @keyframes scrollDot {
+    0% { transform: translateY(-100%); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(360%); opacity: 0; }
+  }
+
+  /* Decorative equalizer bars at the bottom of the hero */
+  .lp-eq {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 28px;
+    opacity: 0.18;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .lp-eq span {
+    display: block;
+    width: 3px;
+    background: linear-gradient(180deg, transparent, #c9a43a 30%, #c9a43a 70%, transparent);
+    border-radius: 2px;
+    animation: eqBar 1.4s ease-in-out infinite;
+  }
+  .lp-eq span:nth-child(1)  { height: 12px; animation-delay: 0.0s; }
+  .lp-eq span:nth-child(2)  { height: 20px; animation-delay: 0.15s; }
+  .lp-eq span:nth-child(3)  { height: 8px;  animation-delay: 0.3s; }
+  .lp-eq span:nth-child(4)  { height: 24px; animation-delay: 0.1s; }
+  .lp-eq span:nth-child(5)  { height: 14px; animation-delay: 0.45s; }
+  .lp-eq span:nth-child(6)  { height: 18px; animation-delay: 0.25s; }
+  .lp-eq span:nth-child(7)  { height: 26px; animation-delay: 0.05s; }
+  .lp-eq span:nth-child(8)  { height: 10px; animation-delay: 0.4s; }
+  .lp-eq span:nth-child(9)  { height: 22px; animation-delay: 0.2s; }
+  .lp-eq span:nth-child(10) { height: 16px; animation-delay: 0.35s; }
+  .lp-eq span:nth-child(11) { height: 8px;  animation-delay: 0.5s; }
+  .lp-eq span:nth-child(12) { height: 20px; animation-delay: 0.1s; }
+  .lp-eq span:nth-child(13) { height: 14px; animation-delay: 0.3s; }
+  .lp-eq span:nth-child(14) { height: 24px; animation-delay: 0.2s; }
+  .lp-eq span:nth-child(15) { height: 12px; animation-delay: 0.4s; }
+  @keyframes eqBar {
+    0%, 100% { transform: scaleY(0.4); }
+    50%      { transform: scaleY(1.6); }
+  }
+
+  /* ─── TRUST STRIP ──────────────────────────────────────────────── */
+  .lp-trust {
+    position: relative;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background:
+      linear-gradient(180deg, rgba(201, 164, 58, 0.04), transparent 60%),
+      var(--bg-secondary);
+    padding: 3rem 1.5rem;
+  }
+  .lp-trust::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a43a, transparent);
+  }
+  .lp-trust__inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+  }
+  .lp-trust__item {
     text-align: center;
   }
-  .service-card::before {
+  .lp-trust__num {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 600;
+    color: #c9a43a;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .lp-trust__label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .lp-trust__divider {
+    width: 1px;
+    height: 36px;
+    background: var(--border-subtle);
+  }
+
+  /* ─── SECTION SHELL ────────────────────────────────────────────── */
+  .lp-section {
+    padding: 7rem 1.5rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+  }
+
+  .lp-section__head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 4rem;
+  }
+  .lp-section__eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9a43a;
+    margin-bottom: 1.25rem;
+  }
+  .lp-section__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: var(--text-primary);
+  }
+  .lp-section__sub {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ─── SERVICES BENTO ───────────────────────────────────────────── */
+  .lp-services-bento {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .lp-service {
+    position: relative;
+    background: var(--bg-glass);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    padding: 2rem 1.75rem;
+    overflow: hidden;
+    transition: all 0.3s var(--ease-out-expo);
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .lp-service::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    background: linear-gradient(90deg, transparent 25%, rgba(255, 255, 255, 0.10) 50%, transparent 75%);
   }
-  .service-card::after {
+  .lp-service::after {
     content: "";
     position: absolute;
     top: 0;
@@ -62,101 +392,714 @@ layout: archive
     transform: translateX(-50%);
     width: 0;
     height: 2px;
-    background: #c9a43a;
-    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    background: linear-gradient(90deg, transparent, #c9a43a, transparent);
+    transition: width 0.35s var(--ease-out-expo);
     border-radius: 0 0 2px 2px;
   }
-  .service-card:hover {
-    transform: translateY(-2px) scale(1.01);
-    border-color: rgba(201, 164, 58, 0.15);
+  /* Soft inner glow at top center of each card */
+  .lp-service > * { position: relative; z-index: 1; }
+  .lp-service:hover {
+    transform: translateY(-4px);
+    border-color: rgba(201, 164, 58, 0.25);
     background: var(--bg-glass-hover);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22), 0 2px 8px rgba(201, 164, 58, 0.06);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 16px 50px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(201, 164, 58, 0.08);
   }
-  .service-card:hover::after {
-    width: 50%;
+  .lp-service:hover::after { width: 70%; }
+
+  .lp-service--featured {
+    grid-row: span 2;
+    min-height: 460px;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(201, 164, 58, 0.08), transparent 60%),
+      linear-gradient(135deg, rgba(201, 164, 58, 0.06) 0%, rgba(201, 164, 58, 0.02) 100%);
+    border-color: rgba(201, 164, 58, 0.18);
+    box-shadow:
+      0 1px 0 rgba(201, 164, 58, 0.15) inset,
+      0 8px 30px rgba(0, 0, 0, 0.3);
   }
-  .service-card__icon {
-    font-size: 2.2rem;
+  .lp-service--featured::before {
+    background: linear-gradient(90deg, transparent 15%, rgba(201, 164, 58, 0.5) 50%, transparent 85%);
+  }
+  .lp-service--featured:hover {
+    box-shadow:
+      0 1px 0 rgba(201, 164, 58, 0.25) inset,
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      0 6px 20px rgba(201, 164, 58, 0.12);
+  }
+
+  .lp-service__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(201, 164, 58, 0.1);
+    border: 1px solid rgba(201, 164, 58, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #c9a43a;
-    margin-bottom: var(--space-6);
-    display: block;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    font-size: 1.2rem;
+    margin-bottom: 1.25rem;
+    transition: all 0.3s var(--ease-out-expo);
   }
-  .service-card:hover .service-card__icon {
-    transform: scale(1.08);
+  .lp-service:hover .lp-service__icon {
+    background: rgba(201, 164, 58, 0.18);
+    transform: scale(1.05);
   }
-  .service-card__title {
-    font-size: 1.15rem;
+
+  .lp-service__title {
+    font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    margin-bottom: var(--space-3);
+    margin: 0 0 0.5rem;
   }
-  .service-card__text {
+  .lp-service--featured .lp-service__title {
+    font-size: 1.5rem;
+  }
+  .lp-service__text {
     font-size: 0.9rem;
-    line-height: 1.7;
-    color: rgba(242, 242, 245, 0.6);
-    margin: 0;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0 0 1rem;
   }
-  .service-card__metric {
-    display: inline-block;
-    margin-top: var(--space-5);
-    padding: 6px 14px;
+  .lp-service--featured .lp-service__text {
+    font-size: 0.95rem;
+    max-width: 380px;
+  }
+
+  .lp-service__metric {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.85rem;
     background: rgba(201, 164, 58, 0.08);
-    border: 1px solid rgba(201, 164, 58, 0.15);
+    border: 1px solid rgba(201, 164, 58, 0.18);
     border-radius: 100px;
     font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #c9a43a;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    align-self: flex-start;
   }
-  .service-card:hover .service-card__metric {
-    background: rgba(201, 164, 58, 0.12);
+
+  /* ─── VENUE TYPES ──────────────────────────────────────────────── */
+  .lp-venues {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  .lp-venue {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    background: var(--bg-glass);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    text-align: left;
+    transition: all 0.3s var(--ease-out-expo);
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .lp-venue::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
+  }
+  .lp-venue::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 60%;
+    background: linear-gradient(180deg, transparent, #c9a43a, transparent);
+    transition: width 0.3s var(--ease-out-expo);
+    border-radius: 0 2px 2px 0;
+  }
+  .lp-venue:hover {
+    transform: translateY(-4px);
     border-color: rgba(201, 164, 58, 0.25);
+    background: var(--bg-glass-hover);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 16px 50px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(201, 164, 58, 0.08);
   }
-  @media (max-width: 500px) {
-    .landing-container { padding: 4rem 1rem; }
+  .lp-venue:hover::after { width: 2px; }
+  .lp-venue__num {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #c9a43a;
+    line-height: 1;
+    margin-top: 0.3rem;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    opacity: 0.7;
+  }
+  .lp-venue__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: rgba(201, 164, 58, 0.1);
+    border: 1px solid rgba(201, 164, 58, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c9a43a;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+    transition: all 0.3s var(--ease-out-expo);
+  }
+  .lp-venue:hover .lp-venue__icon {
+    background: rgba(201, 164, 58, 0.18);
+    transform: scale(1.05);
+  }
+  .lp-venue h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text-primary);
+    margin: 0 0 0.4rem;
+  }
+  .lp-venue p {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ─── HOW IT WORKS ─────────────────────────────────────────────── */
+  .lp-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+  }
+  .lp-step {
+    position: relative;
+    padding: 2.25rem 1.75rem;
+    background: var(--bg-glass);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s var(--ease-out-expo);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03) inset, 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+  .lp-step:hover {
+    border-color: rgba(201, 164, 58, 0.25);
+    transform: translateY(-4px);
+    background: var(--bg-glass-hover);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 16px 50px rgba(0, 0, 0, 0.4),
+      0 4px 16px rgba(201, 164, 58, 0.08);
+  }
+  .lp-step__num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9a43a, #b8932f);
+    color: #0a0a0f;
+    font-size: 1.05rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 14px rgba(201, 164, 58, 0.25);
+  }
+  .lp-step h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem;
+  }
+  .lp-step p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Connector line between steps on desktop */
+  .lp-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 42px;
+    right: -12px;
+    width: 12px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(201, 164, 58, 0.4), transparent);
+  }
+
+  /* ─── QUOTE / TESTIMONIAL ─────────────────────────────────────── */
+  .lp-quote-wrap {
+    padding: 4rem 1.5rem;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201, 164, 58, 0.05), transparent 70%),
+      var(--bg-primary);
+  }
+  .lp-quote {
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+    padding: 3rem 3rem 3rem 3.5rem;
+    background: var(--bg-glass);
+    border: 1px solid rgba(201, 164, 58, 0.12);
+    border-radius: var(--radius-lg);
+    box-shadow:
+      0 1px 0 rgba(201, 164, 58, 0.1) inset,
+      0 16px 50px rgba(0, 0, 0, 0.3);
+  }
+  .lp-quote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #c9a43a 15%, #c9a43a 85%, transparent);
+    border-radius: 2px;
+  }
+  .lp-quote__inner {
+    padding-left: 0.5rem;
+  }
+  .lp-quote__mark {
+    font-family: Georgia, serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: rgba(201, 164, 58, 0.5);
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .lp-quote blockquote {
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin: 0 0 1.5rem;
+  }
+  .lp-quote__attrib {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .lp-quote__stars {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: #c9a43a;
+  }
+  .lp-quote__attrib > span:last-child {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ─── FINAL CTA ───────────────────────────────────────────────── */
+  .lp-cta {
+    position: relative;
+    max-width: var(--content-width);
+    margin: 0 auto 5rem;
+    padding: 5.5rem 2.5rem;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201, 164, 58, 0.10), transparent 70%),
+      linear-gradient(135deg, rgba(201, 164, 58, 0.08) 0%, rgba(201, 164, 58, 0.02) 100%);
+    border: 1px solid rgba(201, 164, 58, 0.22);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow:
+      0 1px 0 rgba(201, 164, 58, 0.2) inset,
+      0 30px 80px rgba(0, 0, 0, 0.4);
+  }
+  .lp-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9a43a, transparent);
+  }
+  .lp-cta::after {
+    content: "";
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(201, 164, 58, 0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .lp-cta h2 {
+    position: relative;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.035em;
+    line-height: 1.1;
+    margin: 0 0 1rem;
+    color: var(--text-primary);
+  }
+  .lp-cta p {
+    position: relative;
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto 2rem;
+  }
+  .lp-cta .lp-btn { position: relative; }
+  .lp-cta__note {
+    position: relative;
+    display: block;
+    margin-top: 1.25rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+  .lp-cta__eq {
+    position: absolute;
+    top: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 18px;
+    opacity: 0.25;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .lp-cta__eq span {
+    display: block;
+    width: 2px;
+    background: #c9a43a;
+    border-radius: 1px;
+    animation: eqBar 1.6s ease-in-out infinite;
+  }
+  .lp-cta__eq span:nth-child(1)  { height: 8px;  animation-delay: 0.0s; }
+  .lp-cta__eq span:nth-child(2)  { height: 14px; animation-delay: 0.2s; }
+  .lp-cta__eq span:nth-child(3)  { height: 6px;  animation-delay: 0.4s; }
+  .lp-cta__eq span:nth-child(4)  { height: 16px; animation-delay: 0.1s; }
+  .lp-cta__eq span:nth-child(5)  { height: 10px; animation-delay: 0.3s; }
+  .lp-cta__eq span:nth-child(6)  { height: 18px; animation-delay: 0.15s; }
+  .lp-cta__eq span:nth-child(7)  { height: 8px;  animation-delay: 0.35s; }
+  .lp-cta__eq span:nth-child(8)  { height: 12px; animation-delay: 0.05s; }
+  .lp-cta__eq span:nth-child(9)  { height: 6px;  animation-delay: 0.25s; }
+  .lp-cta__eq span:nth-child(10) { height: 14px; animation-delay: 0.45s; }
+
+  /* ─── SECTION DIVIDER (subtle) ─────────────────────────────────── */
+  .lp-divider {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-subtle), transparent);
+  }
+
+  /* ─── RESPONSIVE ───────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    .lp-services-bento {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .lp-service--featured {
+      grid-column: span 2;
+      grid-row: auto;
+      min-height: 240px;
+    }
+    .lp-venues, .lp-steps { grid-template-columns: 1fr; }
+    .lp-step:not(:last-child)::after { display: none; }
+    .lp-trust__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .lp-trust__divider { display: none; }
+  }
+  @media (max-width: 600px) {
+    .lp-hero { padding: 7rem 1rem 4rem; min-height: auto; }
+    .lp-services-bento { grid-template-columns: 1fr; }
+    .lp-service--featured { grid-column: auto; }
+    .lp-section { padding: 5rem 1.25rem; }
+    .lp-cta { padding: 3.5rem 1.5rem; }
+    .lp-trust__inner { grid-template-columns: 1fr; }
   }
 </style>
 
-<div class="landing-container">
-
-  <div class="landing-intro reveal">
-    <h2>Premium DJ services for venues and events across the Central Coast</h2>
-    <p>Curated sound, professional equipment, and over a decade of experience delivering atmosphere that keeps guests coming back.</p>
-    <span class="accent-line"></span>
-  </div>
-
-  <div class="grid-4">
-    <div class="service-card reveal">
-      <i class="fas fa-gem service-card__icon"></i>
-      <h3 class="service-card__title">Weddings</h3>
-      <p class="service-card__text">Bespoke music curation from ceremony to last dance. Every moment timed to perfection.</p>
-      <span class="service-card__metric">200+ weddings</span>
+<!-- ─── HERO ──────────────────────────────────────────────────────── -->
+<section class="lp-hero">
+  <div class="lp-hero__bg-warm"></div>
+  <div class="lp-hero__inner">
+    <div class="lp-eyebrow reveal">
+      <span class="lp-eyebrow__dot"></span>
+      Now booking 2026
     </div>
-    <div class="service-card reveal">
-      <i class="fas fa-gift service-card__icon"></i>
-      <h3 class="service-card__title">Private Parties</h3>
-      <p class="service-card__text">Milestone birthdays, engagements, and celebrations with playlists built around your crowd.</p>
-      <span class="service-card__metric">All ages</span>
+    <h1 class="reveal">
+      Music that <span class="gold">elevates</span><br>your venue.
+    </h1>
+    <p class="lp-hero__sub reveal">
+      Curated DJ sets for bars, weddings, and events across the Central Coast. Atmospheric sound, professional gear, and over a decade reading rooms.
+    </p>
+    <div class="lp-hero__ctas reveal">
+      <a href="/contact/" class="lp-btn lp-btn--primary">
+        Discuss your event
+        <span class="lp-btn__arrow">→</span>
+      </a>
+      <a href="/services/" class="lp-btn lp-btn--ghost">
+        See what's included
+      </a>
     </div>
-    <div class="service-card reveal">
-      <i class="fas fa-music service-card__icon"></i>
-      <h3 class="service-card__title">Bars &amp; Venues</h3>
-      <p class="service-card__text">Atmospheric sets engineered for hospitality. Boost dwell time and repeat visits.</p>
-      <span class="service-card__metric">15k+ tracks</span>
-    </div>
-    <div class="service-card reveal">
-      <i class="fas fa-briefcase service-card__icon"></i>
-      <h3 class="service-card__title">Corporate Events</h3>
-      <p class="service-card__text">Polished, on-brand sound for launches, galas, and functions. Zero hassle, full compliance.</p>
-      <span class="service-card__metric">Fully insured</span>
+    <div class="lp-scroll-cue reveal" aria-hidden="true">
+      <span>Scroll</span>
+      <span class="lp-scroll-cue__line"></span>
     </div>
   </div>
+  <!-- Decorative equalizer bars, abstract, low contrast -->
+  <div class="lp-eq" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+</section>
 
-  <div class="hero-cta" style="text-align: center;">
-    <a href="/contact/" class="btn btn-accent">Discuss your event</a>
+<!-- ─── TRUST STRIP ───────────────────────────────────────────────── -->
+<section class="lp-trust">
+  <div class="lp-trust__inner">
+    <div class="lp-trust__item">
+      <div class="lp-trust__num reveal" data-count="12">12+</div>
+      <div class="lp-trust__label">Years on the Coast</div>
+    </div>
+    <div class="lp-trust__divider"></div>
+    <div class="lp-trust__item">
+      <div class="lp-trust__num reveal" data-count="500">500+</div>
+      <div class="lp-trust__label">Events Delivered</div>
+    </div>
+    <div class="lp-trust__divider"></div>
+    <div class="lp-trust__item">
+      <div class="lp-trust__num reveal" data-count="50">50+</div>
+      <div class="lp-trust__label">Venues Trusted</div>
+    </div>
+    <div class="lp-trust__divider"></div>
+    <div class="lp-trust__item">
+      <div class="lp-trust__num">100%</div>
+      <div class="lp-trust__label">Fully Insured</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ──────────────────────────────────────────────────── -->
+<div class="lp-section">
+  <div class="lp-section__head">
+    <div class="lp-section__eyebrow reveal">Services</div>
+    <h2 class="lp-section__title reveal">Built around the moment</h2>
+    <p class="lp-section__sub reveal">Every event is different. Eventty adapts the music, the gear, and the energy to fit the room — not the other way around.</p>
   </div>
 </div>
+
+<div class="lp-services-bento">
+  <a href="/services/" class="lp-service lp-service--featured reveal">
+    <div class="lp-service__icon">
+      <i class="fas fa-glass-martini-alt"></i>
+    </div>
+    <h3 class="lp-service__title">Bars &amp; Venues</h3>
+    <p class="lp-service__text">Residencies and one-off sets engineered for hospitality. Atmospheric sound that lifts dwell time, sets the mood, and keeps the room full — without ever overwhelming conversation.</p>
+    <span class="lp-service__metric">Most-booked</span>
+  </a>
+
+  <a href="/services/" class="lp-service reveal">
+    <div class="lp-service__icon">
+      <i class="fas fa-gem"></i>
+    </div>
+    <h3 class="lp-service__title">Weddings</h3>
+    <p class="lp-service__text">Bespoke curation from aisle to last dance.</p>
+    <span class="lp-service__metric">200+ weddings</span>
+  </a>
+
+  <a href="/services/" class="lp-service reveal">
+    <div class="lp-service__icon">
+      <i class="fas fa-gift"></i>
+    </div>
+    <h3 class="lp-service__title">Private Parties</h3>
+    <p class="lp-service__text">Birthdays, engagements, milestones.</p>
+    <span class="lp-service__metric">All ages</span>
+  </a>
+
+  <a href="/services/" class="lp-service reveal">
+    <div class="lp-service__icon">
+      <i class="fas fa-briefcase"></i>
+    </div>
+    <h3 class="lp-service__title">Corporate</h3>
+    <p class="lp-service__text">Launches, galas, and functions on brand.</p>
+    <span class="lp-service__metric">Fully insured</span>
+  </a>
+
+  <a href="/services/" class="lp-service reveal">
+    <div class="lp-service__icon">
+      <i class="fas fa-calendar-check"></i>
+    </div>
+    <h3 class="lp-service__title">Special Events</h3>
+    <p class="lp-service__text">Festivals, fundraisers, and one-offs.</p>
+    <span class="lp-service__metric">Any scale</span>
+  </a>
+</div>
+
+<!-- ─── VENUE FIT ─────────────────────────────────────────────────── -->
+<div class="lp-section">
+  <div class="lp-section__head">
+    <div class="lp-section__eyebrow reveal">Venues we serve</div>
+    <h2 class="lp-section__title reveal">Designed for hospitality spaces</h2>
+    <p class="lp-section__sub reveal">If your venue runs on atmosphere, music is built in. Quiet enough for early trade, sharp enough for peak.</p>
+  </div>
+</div>
+
+<div class="lp-venues">
+  <div class="lp-venue reveal">
+    <div class="lp-venue__num">01</div>
+    <div class="lp-venue__icon"><i class="fas fa-cocktail"></i></div>
+    <div>
+      <h4>Cocktail Bars</h4>
+      <p>Lounge-leaning sets that complement the drink list. No sing-alongs, no surprises.</p>
+    </div>
+  </div>
+  <div class="lp-venue reveal">
+    <div class="lp-venue__num">02</div>
+    <div class="lp-venue__icon"><i class="fas fa-utensils"></i></div>
+    <div>
+      <h4>Restaurants</h4>
+      <p>Low-end, dinner-hour programming. Volume matched to covers, not capacity.</p>
+    </div>
+  </div>
+  <div class="lp-venue reveal">
+    <div class="lp-venue__num">03</div>
+    <div class="lp-venue__icon"><i class="fas fa-theater-masks"></i></div>
+    <div>
+      <h4>Themed Venues</h4>
+      <p>Custom-curated sets matched to your concept — Latin, retro, Mediterranean, beyond.</p>
+    </div>
+  </div>
+</div>
+
+<div class="lp-divider" style="margin-top: 6rem;"></div>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────── -->
+<div class="lp-section">
+  <div class="lp-section__head">
+    <div class="lp-section__eyebrow reveal">How it works</div>
+    <h2 class="lp-section__title reveal">Three steps. No friction.</h2>
+    <p class="lp-section__sub reveal">A clear, predictable path from first message to last song. No upsells, no surprises.</p>
+  </div>
+</div>
+
+<div class="lp-steps">
+  <div class="lp-step reveal">
+    <div class="lp-step__num">1</div>
+    <h4>Talk</h4>
+    <p>A short call to understand the room, the crowd, and the mood you're after.</p>
+  </div>
+  <div class="lp-step reveal">
+    <div class="lp-step__num">2</div>
+    <h4>Curate</h4>
+    <p>A tailored setlist built around your brief — reviewed and refined with you before the day.</p>
+  </div>
+  <div class="lp-step reveal">
+    <div class="lp-step__num">3</div>
+    <h4>Deliver</h4>
+    <p>Pro gear, full setup, and a read-the-room performance from first track to last.</p>
+  </div>
+</div>
+
+<!-- ─── TESTIMONIAL ───────────────────────────────────────────────── -->
+<section class="lp-quote-wrap">
+  <div class="lp-quote">
+    <div class="lp-quote__inner">
+      <div class="lp-quote__mark reveal" aria-hidden="true">"</div>
+      <blockquote class="reveal">
+        Eventty read the room all night — energy shifted exactly when it needed to. Multiple guests asked who was playing. We'd book again in a heartbeat.
+      </blockquote>
+      <div class="lp-quote__attrib reveal">
+        <span class="lp-quote__stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</span>
+        <span>Venue Manager · Central Coast, NSW</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FINAL CTA ─────────────────────────────────────────────────── -->
+<section class="lp-cta reveal">
+  <div class="lp-cta__eq" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <h2>Ready when you are.</h2>
+  <p>Tell us about your event — date, venue, vibe. We'll come back with a tailored plan within 24 hours. No obligation, no hard sell.</p>
+  <a href="/contact/" class="lp-btn lp-btn--primary">
+    Discuss your event
+    <span class="lp-btn__arrow">→</span>
+  </a>
+  <span class="lp-cta__note">Free consultation · Replies within 24 hours</span>
+</section>
+
+<script>
+  // Counter animation for trust strip
+  (function() {
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      if (isNaN(target)) return;
+      const suffix = el.textContent.replace(/[0-9]/g, '');
+      const duration = 1800;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(tick);
+    }
+    const counters = document.querySelectorAll('.lp-trust__num[data-count]');
+    if (!counters.length) return;
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateCounter(e.target);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(c => {
+      // If already in viewport, fire immediately
+      const rect = c.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        animateCounter(c);
+      } else {
+        obs.observe(c);
+      }
+    });
+  })();
+</script>

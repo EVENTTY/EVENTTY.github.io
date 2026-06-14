@@ -1306,3 +1306,22 @@ a:focus-visible {
   0%, 100% { box-shadow: 0 0 0 0 rgba(201, 164, 58, 0.4); }
   50% { box-shadow: 0 0 0 8px rgba(201, 164, 58, 0); }
 }
+
+/* ───────────────────────────────────────────
+   LANDING PAGE (Home) — Hide theme hero block
+   The custom home.html provides its own hero
+   ─────────────────────────────────────────── */
+body.landing-page .page__hero--overlay,
+body.landing-page .page__hero {
+  display: none !important;
+}
+
+body.landing-page .initial-content {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+body.landing-page .archive {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}

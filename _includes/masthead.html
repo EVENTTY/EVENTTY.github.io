@@ -24,33 +24,51 @@
       </nav>
     </div>
   </div>
+  <div class="nav-overlay"></div>
 </div>
 
 <script>
   (function() {
     var toggle = document.querySelector('.nav-toggle');
     var links  = document.querySelector('.visible-links');
-    if (!toggle || !links) return;
+    var overlay = document.querySelector('.nav-overlay');
+    var masthead = document.querySelector('.masthead');
+    if (!toggle || !links || !overlay) return;
+
+    function updateTop() {
+      if (masthead) {
+        links.style.top = masthead.offsetHeight + 'px';
+      }
+    }
+    updateTop();
+    window.addEventListener('resize', updateTop);
+
+    function openMenu() {
+      updateTop();
+      links.classList.add('is-open');
+      overlay.classList.add('is-open');
+      toggle.classList.add('is-active');
+      toggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      links.classList.remove('is-open');
+      overlay.classList.remove('is-open');
+      toggle.classList.remove('is-active');
+      toggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
     toggle.addEventListener('click', function() {
-      var open = links.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open);
-      toggle.classList.toggle('is-active', open);
+      links.classList.contains('is-open') ? closeMenu() : openMenu();
     });
-    // Close on nav link click
+    overlay.addEventListener('click', closeMenu);
     links.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') {
-        links.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.classList.remove('is-active');
-      }
+      if (e.target.tagName === 'A') closeMenu();
     });
-    // Close on outside click
-    document.addEventListener('click', function(e) {
-      if (!toggle.contains(e.target) && !links.contains(e.target)) {
-        links.classList.remove('is-open');
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.classList.remove('is-active');
-      }
+    // ESC to close
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && links.classList.contains('is-open')) closeMenu();
     });
   })();
 </script>

@@ -309,6 +309,8 @@ strong {
   border: none;
   cursor: pointer;
   color: var(--text-primary);
+  position: relative;
+  z-index: 250;
 }
 
 /* Override jQuery greedy-nav hidden class — CSS handles visibility */
@@ -339,6 +341,19 @@ strong {
 
 .navicon::before { top: -6px; }
 .navicon::after { top: 6px; }
+
+/* Hamburger → X animation */
+.greedy-nav__toggle.close .navicon {
+  background: transparent;
+}
+.greedy-nav__toggle.close .navicon::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+.greedy-nav__toggle.close .navicon::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
 
 /* Mobile full-screen overlay */
 @media (max-width: 768px) {

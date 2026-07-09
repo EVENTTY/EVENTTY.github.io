@@ -300,7 +300,7 @@ strong {
 
 /* ── Hamburger button ── */
 .nav-toggle {
-  display: none;                    /* hidden on desktop */
+  display: none;
   width: 48px;
   height: 48px;
   align-items: center;
@@ -310,7 +310,8 @@ strong {
   cursor: pointer;
   padding: 0;
   position: relative;
-  z-index: 250;
+  z-index: 20;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navicon {
@@ -337,77 +338,48 @@ strong {
 .navicon::before { top: -6px; }
 .navicon::after  { top:  6px; }
 
-/* Hamburger → X */
-.nav-toggle.is-active .navicon {
+.menu-open .navicon {
   background: transparent;
 }
-.nav-toggle.is-active .navicon::before {
+.menu-open .navicon::before {
   top: 0;
   transform: rotate(45deg);
 }
-.nav-toggle.is-active .navicon::after {
+.menu-open .navicon::after {
   top: 0;
   transform: rotate(-45deg);
 }
 
-/* ── Mobile nav: fixed slide-down panel ── */
-
-/* Dark backdrop overlay */
-.nav-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 198;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
+/* ── Mobile: simple show/hide ── */
 @media (max-width: 768px) {
   .nav-toggle {
     display: flex;
   }
-
-  .nav-overlay {
-    display: block;
-  }
-  .nav-overlay.is-open {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* Panel: fixed to viewport, slides down from header */
   .visible-links {
-    position: fixed;
-    top: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
     background: rgba(10, 10, 15, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-subtle);
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    padding: var(--space-4) var(--space-6);
-    z-index: 199;
+    padding: var(--space-3) var(--space-6);
+    z-index: 19;
+  }
+  .menu-open .visible-links {
     display: flex;
-    transform: translateY(-100%);
-    transition: transform 0.25s ease;
   }
-
-  .visible-links.is-open {
-    transform: translateY(0);
-  }
-
   .masthead__menu-item a {
-    font-size: 1.05rem;
+    font-size: 1rem;
     padding: var(--space-3) var(--space-4);
     display: block;
     border-radius: var(--radius-sm);
   }
-
   .masthead__menu-item a::after {
     display: none;
   }

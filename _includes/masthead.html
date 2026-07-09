@@ -6,7 +6,7 @@
           <img src="/images/minilogo.png" width="32" height="32" alt="Eventty logo">
           <span>Home</span>
         </a>
-        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <button class="nav-toggle" onclick="document.getElementById('site-nav').classList.toggle('menu-open')" aria-label="Toggle menu">
           <span class="navicon"></span>
         </button>
         <ul class="visible-links">
@@ -24,51 +24,4 @@
       </nav>
     </div>
   </div>
-  <div class="nav-overlay"></div>
 </div>
-
-<script>
-  (function() {
-    var toggle = document.querySelector('.nav-toggle');
-    var links  = document.querySelector('.visible-links');
-    var overlay = document.querySelector('.nav-overlay');
-    var masthead = document.querySelector('.masthead');
-    if (!toggle || !links || !overlay) return;
-
-    function updateTop() {
-      if (masthead) {
-        links.style.top = masthead.offsetHeight + 'px';
-      }
-    }
-    updateTop();
-    window.addEventListener('resize', updateTop);
-
-    function openMenu() {
-      updateTop();
-      links.classList.add('is-open');
-      overlay.classList.add('is-open');
-      toggle.classList.add('is-active');
-      toggle.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMenu() {
-      links.classList.remove('is-open');
-      overlay.classList.remove('is-open');
-      toggle.classList.remove('is-active');
-      toggle.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    toggle.addEventListener('click', function() {
-      links.classList.contains('is-open') ? closeMenu() : openMenu();
-    });
-    overlay.addEventListener('click', closeMenu);
-    links.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') closeMenu();
-    });
-    // ESC to close
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && links.classList.contains('is-open')) closeMenu();
-    });
-  })();
-</script>

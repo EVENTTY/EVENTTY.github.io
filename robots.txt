@@ -1,0 +1,15 @@
+# robots.txt for eventty.org
+# https://eventty.org
+
+User-agent: *
+Allow: /
+
+# Block Jekyll-generated paths that don't exist in production
+Disallow: /assets/js/_main.js
+Disallow: /Gemfile
+Disallow: /Gemfile.lock
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Sitemap location
+Sitemap: https://eventty.org/sitemap.xml

@@ -21,8 +21,8 @@ minimal_mistakes_skin    : "dark"
 locale                   : "en-US"
 title                    : "Eventty"
 title_separator          : "-"
-name                     : "Eventty - Weddings, Parties and Events"
-description              : "Eventty creates unforgettable weddings, parties, and events on the Central Coast, NSW. Professional event planning, styling, and coordination tailored to you."
+name                     : "Eventty"
+description              : "Eventty curates DJ sets for bars, weddings, and events across the Central Coast, NSW. Atmospheric sound, professional gear, and over a decade reading rooms."
 url                      : "https://eventty.org" # ← CHANGE THIS to your actual site URL (no trailing slash!)
 baseurl                  : "" # "" if site is at root, "/repo-name" if in a subfolder
 repository               : "https://eventty.org" # ← CHANGE THIS
@@ -69,7 +69,7 @@ social:
 author:
   name             : "Eventty"
   avatar           : "/images/minilogo.png"
-  bio              : "Weddings, Parties and Events."
+  bio              : "Curated DJ for the Central Coast."
   location         : "Central Coast, NSW"
   email            :
   links:
@@ -122,8 +122,10 @@ exclude:
   - log
   - node_modules
   - package.json
+  - package-lock.json
   - Rakefile
   - README
+  - staticman.yml
   - tmp
   - /docs
   - /test

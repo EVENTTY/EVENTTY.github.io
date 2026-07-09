@@ -298,9 +298,9 @@ strong {
   outline-offset: -2px;
 }
 
-/* Mobile nav toggle */
-.greedy-nav__toggle {
-  display: none;
+/* ── Hamburger button ── */
+.nav-toggle {
+  display: none;                    /* hidden on desktop */
   width: 48px;
   height: 48px;
   align-items: center;
@@ -308,14 +308,9 @@ strong {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--text-primary);
+  padding: 0;
   position: relative;
   z-index: 250;
-}
-
-/* Override jQuery greedy-nav hidden class — CSS handles visibility */
-.greedy-nav__toggle.hidden {
-  display: none;
 }
 
 .navicon {
@@ -324,7 +319,7 @@ strong {
   height: 2px;
   background: var(--text-primary);
   border-radius: 1px;
-  transition: var(--transition-base);
+  transition: background 0.2s ease;
 }
 
 .navicon::before,
@@ -336,55 +331,65 @@ strong {
   height: 2px;
   background: var(--text-primary);
   border-radius: 1px;
-  transition: var(--transition-base);
+  transition: transform 0.2s ease, top 0.2s ease;
 }
 
 .navicon::before { top: -6px; }
-.navicon::after { top: 6px; }
+.navicon::after  { top:  6px; }
 
-/* Hamburger → X animation */
-.greedy-nav__toggle.close .navicon {
+/* Hamburger → X */
+.nav-toggle.is-active .navicon {
   background: transparent;
 }
-.greedy-nav__toggle.close .navicon::before {
+.nav-toggle.is-active .navicon::before {
   top: 0;
   transform: rotate(45deg);
 }
-.greedy-nav__toggle.close .navicon::after {
+.nav-toggle.is-active .navicon::after {
   top: 0;
   transform: rotate(-45deg);
 }
 
-/* Mobile full-screen overlay */
+/* ── Mobile nav panel ── */
 @media (max-width: 768px) {
-  .greedy-nav__toggle,
-  .greedy-nav__toggle.hidden {
+  .nav-toggle {
     display: flex;
   }
+
+  /* Nav floats as a dropdown below the header */
   .visible-links {
-    position: fixed;
-    inset: 0;
-    background: var(--bg-primary);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-4);
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--space-6);
+    max-height: 0;
+    overflow: hidden;
     opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-slow);
-  }
-  .visible-links.open {
-    opacity: 1;
-    pointer-events: all;
+    transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
     z-index: 200;
   }
-  .masthead__menu-item a {
-    font-size: 1.5rem;
-    padding: var(--space-4) var(--space-8);
-    min-height: 48px;
-    display: flex;
-    align-items: center;
+
+  .visible-links.is-open {
+    max-height: 300px;
+    opacity: 1;
+    padding: var(--space-4) var(--space-6);
   }
+
+  .masthead__menu-item a {
+    font-size: 1rem;
+    padding: var(--space-3) var(--space-4);
+    display: block;
+    border-radius: var(--radius-sm);
+  }
+
   .masthead__menu-item a::after {
     display: none;
   }

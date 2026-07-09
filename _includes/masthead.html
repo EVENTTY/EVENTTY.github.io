@@ -6,6 +6,9 @@
           <img src="/images/minilogo.png" width="32" height="32" alt="Eventty logo">
           <span>Home</span>
         </a>
+        <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span class="navicon"></span>
+        </button>
         <ul class="visible-links">
           {%- for link in site.data.navigation.main -%}
             {%- if link.url contains '://' -%}
@@ -18,16 +21,36 @@
             </li>
           {%- endfor -%}
         </ul>
-        <button class="greedy-nav__toggle" type="button" aria-label="Toggle menu">
-          <div class="navicon"></div>
-        </button>
       </nav>
-      <script>
-        document.querySelector('.greedy-nav__toggle').addEventListener('click', function() {
-          document.querySelector('.visible-links').classList.toggle('open');
-          this.classList.toggle('close');
-        });
-      </script>
     </div>
   </div>
 </div>
+
+<script>
+  (function() {
+    var toggle = document.querySelector('.nav-toggle');
+    var links  = document.querySelector('.visible-links');
+    if (!toggle || !links) return;
+    toggle.addEventListener('click', function() {
+      var open = links.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+      toggle.classList.toggle('is-active', open);
+    });
+    // Close on nav link click
+    links.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('is-active');
+      }
+    });
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!toggle.contains(e.target) && !links.contains(e.target)) {
+        links.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('is-active');
+      }
+    });
+  })();
+</script>

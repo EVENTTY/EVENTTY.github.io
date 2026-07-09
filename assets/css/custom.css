@@ -910,9 +910,10 @@ strong {
 .page__footer {
   background: var(--bg-secondary) !important;
   border-top: 1px solid var(--border-subtle) !important;
-  margin-top: 0 !important;
+  margin-top: var(--space-12) !important;
   padding: var(--space-12) var(--space-6);
-  padding-bottom: calc(var(--space-12) + env(safe-area-inset-bottom, 0px));
+  padding-top: var(--space-16);
+  padding-bottom: calc(var(--space-16) + env(safe-area-inset-bottom, 0px));
 }
 
 .page__footer footer {

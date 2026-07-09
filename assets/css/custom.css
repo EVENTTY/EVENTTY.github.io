@@ -311,6 +311,11 @@ strong {
   color: var(--text-primary);
 }
 
+/* Override jQuery greedy-nav hidden class — CSS handles visibility */
+.greedy-nav__toggle.hidden {
+  display: none;
+}
+
 .navicon {
   position: relative;
   width: 20px;
@@ -337,7 +342,8 @@ strong {
 
 /* Mobile full-screen overlay */
 @media (max-width: 768px) {
-  .greedy-nav__toggle {
+  .greedy-nav__toggle,
+  .greedy-nav__toggle.hidden {
     display: flex;
   }
   .visible-links {

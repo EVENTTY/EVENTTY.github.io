@@ -18,10 +18,16 @@
             </li>
           {%- endfor -%}
         </ul>
-        <button class="greedy-nav__toggle hidden" type="button" aria-label="Toggle menu" onclick="document.querySelector('.visible-links').classList.toggle('open')">
+        <button class="greedy-nav__toggle" type="button" aria-label="Toggle menu">
           <div class="navicon"></div>
         </button>
       </nav>
+      <script>
+        document.querySelector('.greedy-nav__toggle').addEventListener('click', function() {
+          document.querySelector('.visible-links').classList.toggle('open');
+          this.classList.toggle('close');
+        });
+      </script>
     </div>
   </div>
 </div>

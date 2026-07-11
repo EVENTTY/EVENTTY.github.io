@@ -1037,12 +1037,12 @@ classes: photos-page
       Create <span class="gold">moments.</span>
     </h1>
     <div class="ph-hero__ctas ph-reveal">
-      <a href="#ph-all" class="ph-btn ph-btn--primary">
-        Gallery
+      <a href="/services/" class="ph-btn ph-btn--primary">
+        Services
         <span class="ph-btn__arrow">→</span>
       </a>
       <a href="/contact/" class="ph-btn ph-btn--ghost">
-        Discuss
+        Contact
       </a>
     </div>
     <div class="ph-scroll-cue ph-reveal" aria-hidden="true">

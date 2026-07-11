@@ -1208,12 +1208,12 @@ classes: services-page
       Pick what fits, or <span class="gold">build something custom.</span>
     </h1>
     <div class="sv-hero__ctas sv-reveal">
-      <a href="#sv-packages" class="sv-btn sv-btn--primary">
-        Packages
+      <a href="/about/" class="sv-btn sv-btn--primary">
+        About
         <span class="sv-btn__arrow">→</span>
       </a>
-      <a href="#sv-gear" class="sv-btn sv-btn--ghost">
-        Included
+      <a href="/photos/" class="sv-btn sv-btn--ghost">
+        Photos
       </a>
     </div>
     <div class="sv-scroll-cue sv-reveal" aria-hidden="true">

@@ -1055,12 +1055,12 @@ classes: contact-page
       Tell us about <span class="gold">the night.</span>
     </h1>
     <div class="ct-hero__ctas ct-reveal">
-      <a href="#ct-direct" class="ct-btn ct-btn--primary">
-        Learn more
+      <a href="/photos/" class="ct-btn ct-btn--primary">
+        Photos
         <span class="ct-btn__arrow">→</span>
       </a>
-      <a href="#ct-direct" class="ct-btn ct-btn--ghost">
-        Options
+      <a href="/" class="ct-btn ct-btn--ghost">
+        Home
       </a>
     </div>
   </div>
@@ -1084,11 +1084,11 @@ classes: contact-page
         We've temporarily disabled the enquiry form. Reply on the platform where you found this link.
       </p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-        <a href="#ct-direct" class="ct-btn ct-btn--primary">
-          Learn more <span class="ct-btn__arrow">→</span>
+        <a href="/photos/" class="ct-btn ct-btn--primary">
+          Photos <span class="ct-btn__arrow">→</span>
         </a>
-        <a href="#ct-direct" class="ct-btn ct-btn--ghost">
-          Options
+        <a href="/" class="ct-btn ct-btn--ghost">
+          Home
         </a>
       </div>
     </div>

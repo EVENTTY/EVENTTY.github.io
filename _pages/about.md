@@ -837,12 +837,12 @@ classes: about-page
       A decade behind<br><span class="gold">the music.</span>
     </h1>
     <div class="ap-hero__ctas ap-reveal">
-      <a href="/contact/" class="ap-btn ap-btn--primary">
-        Discuss
+      <a href="/" class="ap-btn ap-btn--primary">
+        Home
         <span class="ap-btn__arrow">→</span>
       </a>
-      <a href="#ap-trusted" class="ap-btn ap-btn--ghost">
-        Venues
+      <a href="/services/" class="ap-btn ap-btn--ghost">
+        Services
       </a>
     </div>
     <div class="ap-scroll-cue ap-reveal" aria-hidden="true">

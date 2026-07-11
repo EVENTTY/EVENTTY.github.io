@@ -183,9 +183,8 @@ layout: archive
   .lp-btn .lp-btn__arrow {
     transition: transform 0.2s var(--ease-out-expo);
   }
-  .lp-btn:hover .lp-btn__arrow {
-    transform: translateX(3px);
-  }
+  .lp-btn--primary:hover .lp-btn__arrow { transform: translateX(-4px); }
+  .lp-btn--ghost:hover .lp-btn__arrow { transform: translateX(4px); }
 
   /* Scroll cue */
   .lp-scroll-cue {
@@ -1032,11 +1031,12 @@ layout: archive
     </p>
     <div class="lp-hero__ctas reveal">
       <a href="/about/" class="lp-btn lp-btn--primary">
+        <span class="lp-btn__arrow">←</span>
         About
-        <span class="lp-btn__arrow">→</span>
       </a>
       <a href="/services/" class="lp-btn lp-btn--ghost">
         Services
+        <span class="lp-btn__arrow">→</span>
       </a>
     </div>
     <div class="lp-scroll-cue reveal" aria-hidden="true">
@@ -1080,7 +1080,7 @@ layout: archive
 <!-- ═══ FREQUENCY SPECTRUM — live audio waveform ═══ -->
 <section class="ap-freq reveal" id="ap-freq-section">
   <div class="ap-freq__head">
-    <div class="ap-freq__eyebrow">Live audio spectrum</div>
+    <div class="ap-freq__eyebrow">LIVE AUDIO</div>
     <p class="ap-freq__sub">Move your cursor across the bars.</p>
   </div>
   <div class="ap-freq__stage" id="ap-freq-stage">
@@ -1216,11 +1216,11 @@ layout: archive
     <div class="lp-quote__inner">
       <div class="lp-quote__mark reveal" aria-hidden="true">"</div>
       <blockquote class="reveal">
-        Eventty read the room all night. Multiple guests asked who was playing. We'd book again.
+        Multiple guests asked who was playing and to book them again.
       </blockquote>
       <div class="lp-quote__attrib reveal">
         <span class="lp-quote__stars" aria-label="5 out of 5 stars">★ ★ ★ ★ ★</span>
-        <span>Venue Manager · Central Coast, NSW</span>
+        <span>CHRIS M · Central Coast, NSW</span>
       </div>
     </div>
   </div>
@@ -1232,13 +1232,12 @@ layout: archive
     <span></span><span></span><span></span><span></span><span></span>
     <span></span><span></span><span></span><span></span><span></span>
   </div>
-  <h2>Tell us about your event.</h2>
+  <h2>Get in touch.</h2>
   <p>Get a tailored plan within 24 hours.</p>
   <a href="/contact/" class="lp-btn lp-btn--primary">
-    Discuss
-    <span class="lp-btn__arrow">→</span>
+    Contact
   </a>
-  <span class="lp-cta__note">Free consultation · Reply within 24 hours</span>
+  <span class="lp-cta__note">Free consultation</span>
 </section>
 
 <script>

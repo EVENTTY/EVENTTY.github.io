@@ -213,7 +213,8 @@ classes: about-page
     transform: translateY(-1px);
   }
   .ap-btn__arrow { transition: transform 0.2s var(--ease-out-expo); }
-  .ap-btn:hover .ap-btn__arrow { transform: translateX(3px); }
+  .ap-btn--primary:hover .ap-btn__arrow { transform: translateX(-4px); }
+  .ap-btn--ghost:hover .ap-btn__arrow { transform: translateX(4px); }
 
   /* Scroll cue + equalizer (mirrors home) */
   .ap-scroll-cue {
@@ -834,15 +835,16 @@ classes: about-page
       About
     </div>
     <h1 class="ap-reveal">
-      A decade behind<br><span class="gold">the music.</span>
+      <span class="gold" style="font-style:italic;">Music</span> behind your venue.
     </h1>
     <div class="ap-hero__ctas ap-reveal">
       <a href="/" class="ap-btn ap-btn--primary">
+        <span class="ap-btn__arrow">←</span>
         Home
-        <span class="ap-btn__arrow">→</span>
       </a>
       <a href="/services/" class="ap-btn ap-btn--ghost">
         Services
+        <span class="ap-btn__arrow">→</span>
       </a>
     </div>
     <div class="ap-scroll-cue ap-reveal" aria-hidden="true">
@@ -868,8 +870,8 @@ classes: about-page
 
 <div class="ap-cap-row">
   <span class="ap-cap ap-reveal"><i class="fas fa-sliders-h"></i> Curated setlists</span>
-  <span class="ap-cap ap-reveal"><i class="fas fa-microphone"></i> Pro-grade PA</span>
-  <span class="ap-cap ap-reveal"><i class="fas fa-lightbulb"></i> Lighting rig</span>
+  <span class="ap-cap ap-reveal"><i class="fas fa-microphone"></i> Pro equipment</span>
+  <span class="ap-cap ap-reveal"><i class="fas fa-lightbulb"></i> Lighting</span>
   <span class="ap-cap ap-reveal"><i class="fas fa-headphones"></i> Wireless mic</span>
   <span class="ap-cap ap-reveal"><i class="fas fa-shield-alt"></i> Full insurance</span>
   <span class="ap-cap ap-reveal"><i class="fas fa-plug"></i> Backup gear</span>
@@ -1004,7 +1006,7 @@ classes: about-page
 <!-- ═══ ALSO SUPPORTING — 3 artist tiles ═══ -->
 <div class="ap-head ap-reveal" id="ap-artists" style="margin-top: 5rem;">
   <div class="ap-head__eyebrow">Supporting</div>
-  <h2 class="ap-head__title reveal">International artists:</h2>
+  <h2 class="ap-head__title reveal">International Artists:</h2>
 </div>
 
 <div class="ap-artists">
@@ -1047,8 +1049,7 @@ classes: about-page
   </div>
   <h2>Music that fits.</h2>
   <a href="/contact/" class="ap-btn ap-btn--primary">
-    Discuss
-    <span class="ap-btn__arrow">→</span>
+    Contact
   </a>
   <span class="ap-cta__note">Free consultation · Replies within 24 hours</span>
 </section>

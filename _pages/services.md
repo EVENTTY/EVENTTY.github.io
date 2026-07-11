@@ -213,7 +213,8 @@ classes: services-page
     transform: translateY(-1px);
   }
   .sv-btn__arrow { transition: transform 0.2s var(--ease-out-expo); }
-  .sv-btn:hover .sv-btn__arrow { transform: translateX(3px); }
+  .sv-btn--primary:hover .sv-btn__arrow { transform: translateX(-4px); }
+  .sv-btn--ghost:hover .sv-btn__arrow { transform: translateX(4px); }
 
   /* Scroll cue + equalizer (mirrors home) */
   .sv-scroll-cue {
@@ -1192,7 +1193,7 @@ classes: services-page
 <nav class="sv-mini-nav" aria-label="Page sections">
   <a href="#sv-gear">Gear</a>
   <a href="#sv-spectrum">Genres</a>
-  <a href="#sv-packages">Packages</a>
+  <a href="#sv-builder">Builder</a>
   <a href="#sv-incl">Inclusions</a>
   <a href="#sv-cta">Book</a>
 </nav>
@@ -1205,15 +1206,16 @@ classes: services-page
       Services
     </div>
     <h1 class="sv-reveal">
-      Pick what fits, or <span class="gold">build something custom.</span>
+      What <span class="gold" style="font-style:italic;">we</span> bring.
     </h1>
     <div class="sv-hero__ctas sv-reveal">
       <a href="/about/" class="sv-btn sv-btn--primary">
+        <span class="sv-btn__arrow">←</span>
         About
-        <span class="sv-btn__arrow">→</span>
       </a>
       <a href="/photos/" class="sv-btn sv-btn--ghost">
         Photos
+        <span class="sv-btn__arrow">→</span>
       </a>
     </div>
     <div class="sv-scroll-cue sv-reveal" aria-hidden="true">
@@ -1441,61 +1443,521 @@ classes: services-page
 }
 </script>
 
-<!-- ═══ PACKAGES ═══ -->
-<section class="sv-packages" id="sv-packages">
-  <div class="sv-packages__head">
-    <div class="sv-packages__eyebrow sv-reveal">Packages</div>
-    <h2 class="sv-packages__title sv-reveal">Pick the event that fits.</h2>
-    <p class="sv-packages__sub sv-reveal">Or discuss a custom build.</p>
+<!-- ═══ SETUP BUILDER ═══ -->
+<section class="sv-builder" id="sv-builder">
+  <div class="sv-builder__head">
+    <div class="sv-builder__eyebrow sv-reveal">Configure</div>
+    <h2 class="sv-builder__title sv-reveal">Build your event.</h2>
+    <p class="sv-builder__sub sv-reveal">Slide to your event size to learn more.</p>
   </div>
 
-  <div class="sv-packages__grid">
-    <div class="sv-pkg sv-reveal">
-      <div class="sv-pkg__tier">Tier 01</div>
-      <h3 class="sv-pkg__name">Standard</h3>
-      <ul class="sv-pkg__list">
-        <li>DJ + full PA system</li>
-        <li>Up to 100 guests</li>
-        <li>Pre-event brief call</li>
-        <li>Curated setlists</li>
-        <li>Setup &amp; pack-down included</li>
-        <li class="is-muted">No lighting rig</li>
-        <li class="is-muted">No MC services</li>
-      </ul>
-      <a href="/contact/" class="sv-pkg__cta">Discuss <span>→</span></a>
+  <div class="sv-builder__panel sv-reveal">
+    <!-- Panel header -->
+    <div class="sv-builder__panel-head">
+      <span class="sv-builder__brand">EVT-CFG-01</span>
+      <span class="sv-builder__panel-led">
+        <span class="led led--green"></span>
+        <span class="sv-builder__led-lbl">LIVE</span>
+      </span>
     </div>
 
-    <div class="sv-pkg sv-pkg--featured sv-reveal">
-      <div class="sv-pkg__ribbon">Most booked</div>
-      <div class="sv-pkg__tier">Tier 02</div>
-      <h3 class="sv-pkg__name">Production</h3>
-      <ul class="sv-pkg__list">
-        <li>DJ + lighting rig</li>
-        <li>Up to 250 guests</li>
-        <li>Three setlists</li>
-        <li>Wireless MC mic included</li>
-        <li>Backup gear on-site</li>
-        <li>Insurance certificate provided</li>
-      </ul>
-      <a href="/contact/" class="sv-pkg__cta">Discuss <span>→</span></a>
+    <!-- Guest count slider -->
+    <div class="sv-builder__control">
+      <div class="sv-builder__control-label">
+        <span class="sv-builder__knob-lbl">Guest count</span>
+        <span class="sv-builder__value" id="sv-builder-guests">150</span>
+      </div>
+      <div class="sv-builder__slider-track">
+        <input type="range" class="sv-builder__slider" id="sv-builder-slider"
+          min="50" max="800" value="150" step="10"
+          aria-label="Number of guests">
+        <div class="sv-builder__slider-ticks">
+          <span>50</span><span>200</span><span>400</span><span>600</span><span>800+</span>
+        </div>
+      </div>
     </div>
 
-    <div class="sv-pkg sv-reveal">
-      <div class="sv-pkg__tier">Tier 03</div>
-      <h3 class="sv-pkg__name">Full</h3>
-      <ul class="sv-pkg__list">
-        <li>Everything in Production, plus:</li>
-        <li>Up to 800+ guests</li>
-        <li>Extended line array</li>
-        <li>Two-DJ handover</li>
-        <li>Dedicated MC</li>
-        <li>Pre-event venue liaison</li>
-        <li>White-glove load-in &amp; pack-down</li>
-      </ul>
-      <a href="/contact/" class="sv-pkg__cta">Discuss <span>→</span></a>
+    <!-- Toggle chips -->
+    <div class="sv-builder__toggles">
+      <span class="sv-builder__knob-lbl">Add-ons</span>
+      <div class="sv-builder__chip-row" id="sv-builder-chips">
+        <button class="sv-builder__chip" data-addon="lighting">
+          <i class="fas fa-lightbulb"></i> Dancefloor lighting
+        </button>
+        <button class="sv-builder__chip" data-addon="mics">
+          <i class="fas fa-microphone"></i> Extra wireless mics
+        </button>
+        <button class="sv-builder__chip" data-addon="mc">
+          <i class="fas fa-user-tie"></i> Dedicated MC
+        </button>
+        <button class="sv-builder__chip" data-addon="backup">
+          <i class="fas fa-shield-alt"></i> Full backup gear
+        </button>
+        <button class="sv-builder__chip" data-addon="production">
+          <i class="fas fa-star"></i> Full production
+        </button>
+      </div>
+    </div>
+
+    <!-- Live readout -->
+    <div class="sv-builder__readout" id="sv-builder-readout">
+      <div class="sv-builder__readout-head">
+        <span class="sv-builder__knob-lbl">Equipment manifest</span>
+        <span class="sv-builder__readout-status">—</span>
+      </div>
+      <div class="sv-builder__manifest" id="sv-builder-manifest">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="sv-builder__cta-row">
+      <a href="/contact/" class="sv-btn sv-btn--primary">Book</a>
+      <span class="sv-builder__cta-note">Free consultation · No obligation</span>
     </div>
   </div>
 </section>
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   SETUP BUILDER — interactive configurator
+   Hardware-console aesthetic matching the gear rack.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── Section shell ── */
+.sv-builder {
+  padding: 6rem 1.5rem 5rem;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  position: relative;
+}
+.sv-builder::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 300px; height: 1px;
+  background: linear-gradient(90deg, transparent, #04a9ff, transparent);
+}
+.sv-builder__head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+.sv-builder__eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #04a9ff;
+  margin-bottom: 1.25rem;
+}
+.sv-builder__title {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin: 0 0 1rem;
+  color: var(--text-primary);
+}
+.sv-builder__sub {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Control panel ── */
+.sv-builder__panel {
+  max-width: 820px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #1a1a22 0%, #14141a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 8px 30px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+.sv-builder__panel-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.2);
+}
+.sv-builder__brand {
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #04a9ff;
+  padding: 0.3rem 0.6rem;
+  background: linear-gradient(135deg, rgba(4, 169, 255, 0.18) 0%, rgba(4, 169, 255, 0.06) 100%);
+  border: 1px solid rgba(4, 169, 255, 0.3);
+  border-radius: 3px;
+}
+.sv-builder__panel-led {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+.sv-builder__panel-led .led {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px rgba(74, 222, 128, 0.8);
+  animation: svLedPulse 2.4s ease-in-out infinite;
+}
+.sv-builder__led-lbl {
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ── Controls ── */
+.sv-builder__control {
+  padding: 1.75rem 1.5rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.sv-builder__control-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+.sv-builder__knob-lbl {
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.sv-builder__value {
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #04a9ff;
+  letter-spacing: 0.04em;
+}
+.sv-builder__slider-track {
+  padding: 0.25rem 0 0.5rem;
+}
+.sv-builder__slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, rgba(4, 169, 255, 0.2), rgba(4, 169, 255, 0.6));
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+.sv-builder__slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #04a9ff, #0090dd);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(4, 169, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+.sv-builder__slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+.sv-builder__slider::-moz-range-thumb {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #04a9ff, #0090dd);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.sv-builder__slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  padding: 0.35rem 0 0;
+  letter-spacing: 0.06em;
+}
+
+/* ── Toggle chips ── */
+.sv-builder__toggles {
+  padding: 1rem 1.5rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.sv-builder__chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.sv-builder__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out-expo);
+  user-select: none;
+  white-space: nowrap;
+}
+.sv-builder__chip i {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  transition: color 0.2s var(--ease-out-expo);
+}
+.sv-builder__chip:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(4, 169, 255, 0.3);
+  color: var(--text-primary);
+}
+.sv-builder__chip:hover i { color: #04a9ff; }
+.sv-builder__chip.is-on {
+  background: linear-gradient(135deg, rgba(4, 169, 255, 0.18) 0%, rgba(4, 169, 255, 0.06) 100%);
+  border-color: rgba(4, 169, 255, 0.5);
+  color: #04a9ff;
+  box-shadow: 0 0 12px rgba(4, 169, 255, 0.15);
+}
+.sv-builder__chip.is-on i { color: #04a9ff; }
+
+/* ── Live readout ── */
+.sv-builder__readout {
+  padding: 1.25rem 1.5rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  background: rgba(0, 0, 0, 0.15);
+}
+.sv-builder__readout-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+.sv-builder__readout-status {
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: #4ade80;
+  text-transform: uppercase;
+}
+.sv-builder__manifest {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+}
+.sv-builder__item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(4, 169, 255, 0.08);
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  animation: svBItemIn 0.3s var(--ease-out-expo);
+}
+.sv-builder__item i {
+  color: #04a9ff;
+  font-size: 0.8rem;
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+.sv-builder__item-count {
+  margin-left: auto;
+  font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #04a9ff;
+  background: rgba(4, 169, 255, 0.1);
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+@keyframes svBItemIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── CTA ── */
+.sv-builder__cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  flex-wrap: wrap;
+}
+.sv-builder__cta-note {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+</style>
+
+<script>
+(function() {
+  const slider = document.getElementById('sv-builder-slider');
+  const guestDisplay = document.getElementById('sv-builder-guests');
+  const manifest = document.getElementById('sv-builder-manifest');
+  const status = document.querySelector('.sv-builder__readout-status');
+  const chips = document.querySelectorAll('.sv-builder__chip');
+
+  // Toggle chips
+  chips.forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      this.classList.toggle('is-on');
+      updateManifest();
+    });
+  });
+
+  // Slider
+  slider.addEventListener('input', function() {
+    var val = parseInt(this.value);
+    guestDisplay.textContent = val >= 800 ? '800+' : val;
+    updateManifest();
+  });
+
+  function getAddons() {
+    var addons = {};
+    chips.forEach(function(chip) {
+      addons[chip.dataset.addon] = chip.classList.contains('is-on');
+    });
+    return addons;
+  }
+
+  function updateManifest() {
+    var guests = parseInt(slider.value);
+    var addons = getAddons();
+    var items = [];
+
+    // Determine tier by guest count
+    var tier;
+    if (guests <= 100) tier = 1;
+    else if (guests <= 250) tier = 2;
+    else if (guests <= 500) tier = 3;
+    else tier = 4;
+
+    // If full production is on, bump tier
+    if (addons.production) {
+      tier = Math.min(tier + 1, 4);
+    }
+
+    // Base equipment by tier
+    if (tier === 1) {
+      items.push({ icon: 'fas fa-volume-up', label: 'PA tops', count: '2×' });
+      items.push({ icon: 'fas fa-headphones', label: 'DJ controller', count: '1×' });
+      if (addons.lighting) {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '4×' });
+      } else {
+        items.push({ icon: 'fas fa-lightbulb', label: 'Ambient lighting', count: 'included' });
+      }
+      items.push({ icon: 'fas fa-microphone', label: 'Wireless mic', count: '1×' });
+      if (addons.mics) items.push({ icon: 'fas fa-microphone', label: 'Extra mics', count: '+2×' });
+    } else if (tier === 2) {
+      items.push({ icon: 'fas fa-volume-up', label: 'PA tops', count: '2×' });
+      items.push({ icon: 'fas fa-wave-square', label: 'Subwoofers', count: '2×' });
+      items.push({ icon: 'fas fa-headphones', label: 'DJ controller', count: '1×' });
+      if (addons.lighting) {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '8×' });
+        items.push({ icon: 'fas fa-sync', label: 'Moving heads', count: '2×' });
+      } else {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '4×' });
+      }
+      items.push({ icon: 'fas fa-microphone', label: 'Wireless mics', count: '2×' });
+      if (addons.mics) items.push({ icon: 'fas fa-microphone', label: 'Extra mics', count: '+2×' });
+      if (addons.mc) items.push({ icon: 'fas fa-user-tie', label: 'Dedicated MC', count: '1×' });
+      if (addons.backup) items.push({ icon: 'fas fa-shield-alt', label: 'Backup gear', count: 'on-site' });
+    } else if (tier === 3) {
+      items.push({ icon: 'fas fa-volume-up', label: 'Line array tops', count: '4×' });
+      items.push({ icon: 'fas fa-wave-square', label: 'Subwoofers', count: '2×' });
+      items.push({ icon: 'fas fa-headphones', label: 'DJ controller', count: '1×' });
+      items.push({ icon: 'fas fa-laptop', label: 'Backup laptop', count: '1×' });
+      if (addons.lighting) {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '12×' });
+        items.push({ icon: 'fas fa-sync', label: 'Moving heads', count: '4×' });
+      } else {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '8×' });
+        items.push({ icon: 'fas fa-sync', label: 'Moving heads', count: '2×' });
+      }
+      items.push({ icon: 'fas fa-microphone', label: 'Wireless mics', count: '2×' });
+      if (addons.mics) items.push({ icon: 'fas fa-microphone', label: 'Extra mics', count: '+2×' });
+      if (addons.mc) {
+        items.push({ icon: 'fas fa-user-tie', label: 'Dedicated MC', count: '1×' });
+      }
+      if (addons.backup) items.push({ icon: 'fas fa-shield-alt', label: 'Backup gear', count: 'on-site' });
+      items.push({ icon: 'fas fa-file-alt', label: 'Insurance cert', count: 'provided' });
+    } else {
+      // tier 4
+      items.push({ icon: 'fas fa-volume-up', label: 'Line array tops', count: '6×' });
+      items.push({ icon: 'fas fa-wave-square', label: 'Subwoofers', count: '4×' });
+      items.push({ icon: 'fas fa-headphones', label: 'DJ controllers', count: '2×' });
+      items.push({ icon: 'fas fa-laptop', label: 'Backup laptop', count: '1×' });
+      if (addons.lighting) {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '16×' });
+        items.push({ icon: 'fas fa-sync', label: 'Moving heads', count: '6×' });
+      } else {
+        items.push({ icon: 'fas fa-lightbulb', label: 'PAR uplights', count: '12×' });
+        items.push({ icon: 'fas fa-sync', label: 'Moving heads', count: '4×' });
+      }
+      items.push({ icon: 'fas fa-microphone', label: 'Wireless mics', count: '4×' });
+      if (addons.mics) items.push({ icon: 'fas fa-microphone', label: 'Extra mics', count: '+2×' });
+      items.push({ icon: 'fas fa-user-tie', label: 'Dedicated MC', count: '1×' });
+      items.push({ icon: 'fas fa-shield-alt', label: 'Full backup gear', count: 'on-site' });
+      items.push({ icon: 'fas fa-file-alt', label: 'Insurance cert', count: 'provided' });
+      items.push({ icon: 'fas fa-handshake', label: 'Venue liaison', count: 'included' });
+    }
+
+    // Add MC if checked on tier 2 without it (already added above for tier 2+)
+    // Handle tier 1 MC
+    if (tier === 1 && addons.mc) {
+      items.push({ icon: 'fas fa-user-tie', label: 'Dedicated MC', count: '1×' });
+    }
+    // Handle tier 1 backup
+    if (tier === 1 && addons.backup) {
+      items.push({ icon: 'fas fa-shield-alt', label: 'Backup speaker', count: '1×' });
+    }
+
+    // Render
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      html += '<div class="sv-builder__item" style="animation-delay:' + (i * 0.03) + 's">' +
+        '<i class="' + items[i].icon + '"></i>' +
+        '<span>' + items[i].label + '</span>' +
+        '<span class="sv-builder__item-count">' + items[i].count + '</span>' +
+        '</div>';
+    }
+    manifest.innerHTML = html || '<span style="color:var(--text-muted);font-size:0.85rem;">Slide or tap to see what we bring.</span>';
+
+    // Status
+    var tierNames = ['Intimate', 'Standard', 'Large', 'Full-scale'];
+    status.textContent = 'READY · ' + tierNames[tier - 1];
+  }
+
+  // Initial render
+  updateManifest();
+})();
+</script>
 
 <!-- ═══ INCLUSIONS — two columns ═══ -->
 <section class="sv-incl" id="sv-incl">
@@ -1565,8 +2027,7 @@ classes: services-page
   <h2>Build your event.</h2>
   <p>Tell us about the event. Tailored package and quote within 24 hours.</p>
   <a href="/contact/" class="sv-btn sv-btn--primary">
-    Discuss
-    <span class="sv-btn__arrow">→</span>
+    Contact
   </a>
   <span class="sv-cta__note">Free consultation · Custom quotes · No obligation</span>
 </section>

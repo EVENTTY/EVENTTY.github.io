@@ -92,6 +92,7 @@ classes: photos-page
     filter: grayscale(30%) saturate(0.85) contrast(1.05);
     pointer-events: none;
     z-index: 0;
+    animation: phHeroSpin 180s linear infinite;
   }
   .ph-hero::after {
     content: "";
@@ -102,6 +103,10 @@ classes: photos-page
       linear-gradient(180deg, var(--bg-primary) 0%, transparent 12%, transparent 88%, var(--bg-primary) 100%);
     pointer-events: none;
     z-index: 1;
+  }
+  @keyframes phHeroSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
   }
   .ph-hero__inner {
     position: relative;
@@ -200,7 +205,8 @@ classes: photos-page
     transform: translateY(-1px);
   }
   .ph-btn__arrow { transition: transform 0.2s var(--ease-out-expo); }
-  .ph-btn:hover .ph-btn__arrow { transform: translateX(3px); }
+  .ph-btn--primary:hover .ph-btn__arrow { transform: translateX(-4px); }
+  .ph-btn--ghost:hover .ph-btn__arrow { transform: translateX(4px); }
 
   .ph-scroll-cue {
     display: inline-flex;
@@ -1038,11 +1044,12 @@ classes: photos-page
     </h1>
     <div class="ph-hero__ctas ph-reveal">
       <a href="/services/" class="ph-btn ph-btn--primary">
+        <span class="ph-btn__arrow">←</span>
         Services
-        <span class="ph-btn__arrow">→</span>
       </a>
       <a href="/contact/" class="ph-btn ph-btn--ghost">
         Contact
+        <span class="ph-btn__arrow">→</span>
       </a>
     </div>
     <div class="ph-scroll-cue ph-reveal" aria-hidden="true">
@@ -1067,21 +1074,27 @@ classes: photos-page
     </span>
   </div>
   <div class="ph-console__result" id="ph-result">
-    Showing <b>2</b> frames
+    Showing <b>3</b> frames
   </div>
 </section>
 
 <!-- ═══ THE GALLERY ═══ -->
 <section class="ph-gallery">
   <div class="ph-mosaic" id="ph-mosaic">
-    <a class="ph-tile ph-tile--feat ph-reveal" href="#" data-src="/images/gallery-2.jpg" data-exif="f/2.8 · 1/60s · ISO 800">
-      <img src="/images/gallery-2.jpg" alt="Gallery frame 1">
+    <a class="ph-tile ph-tile--feat ph-reveal" href="#" data-src="/images/gallery-3.jpg" data-exif="iPhone 12 · f/1.6 · 26mm">
+      <img src="/images/gallery-3.jpg" alt="Gallery frame 1">
+      <span class="ph-tile__exif"><i class="fas fa-camera"></i> iPhone 12 · f/1.6 · 26mm</span>
+      <div class="ph-tile__view"><i class="fas fa-expand"></i></div>
+    </a>
+
+    <a class="ph-tile ph-reveal" href="#" data-src="/images/gallery-2.jpg" data-exif="f/2.8 · 1/60s · ISO 800">
+      <img src="/images/gallery-2.jpg" alt="Gallery frame 2">
       <span class="ph-tile__exif"><i class="fas fa-camera"></i> f/2.8 · 1/60s · ISO 800</span>
       <div class="ph-tile__view"><i class="fas fa-expand"></i></div>
     </a>
 
     <a class="ph-tile ph-reveal" href="#" data-src="/images/gallery-1.jpg" data-exif="f/1.8 · 1/125s · ISO 400">
-      <img src="/images/gallery-1.jpg" alt="Gallery frame 2">
+      <img src="/images/gallery-1.jpg" alt="Gallery frame 3">
       <span class="ph-tile__exif"><i class="fas fa-camera"></i> f/1.8 · 1/125s · ISO 400</span>
       <div class="ph-tile__view"><i class="fas fa-expand"></i></div>
     </a>
@@ -1098,11 +1111,15 @@ classes: photos-page
   <div class="ph-strip" id="ph-strip-track">
     <a class="ph-strip-item" href="#" data-target="0">
       <span class="ph-strip-item__num">01</span>
-      <img src="/images/gallery-1.jpg" alt="Frame 1">
+      <img src="/images/gallery-3.jpg" alt="Frame 1">
     </a>
     <a class="ph-strip-item" href="#" data-target="1">
       <span class="ph-strip-item__num">02</span>
       <img src="/images/gallery-2.jpg" alt="Frame 2">
+    </a>
+    <a class="ph-strip-item" href="#" data-target="2">
+      <span class="ph-strip-item__num">03</span>
+      <img src="/images/gallery-1.jpg" alt="Frame 3">
     </a>
   </div>
 </section>

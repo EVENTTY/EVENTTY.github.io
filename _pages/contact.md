@@ -199,7 +199,8 @@ classes: contact-page
     transform: translateY(-1px);
   }
   .ct-btn__arrow { transition: transform 0.2s var(--ease-out-expo); }
-  .ct-btn:hover .ct-btn__arrow { transform: translateX(3px); }
+  .ct-btn--primary:hover .ct-btn__arrow { transform: translateX(-4px); }
+  .ct-btn--ghost:hover .ct-btn__arrow { transform: translateX(4px); }
 
   /* ════════════════════════════════════════════════════════════
      THE EVENT BRIEF — multi-step form
@@ -776,141 +777,146 @@ classes: contact-page
     width: 300px; height: 1px;
     background: linear-gradient(90deg, transparent, #04a9ff, transparent);
   }
-  .ct-direct__head {
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto 3rem;
-  }
-  .ct-direct__eyebrow {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #04a9ff;
-    margin-bottom: 1.25rem;
-  }
-  .ct-direct__title {
-    font-size: clamp(1.5rem, 2.8vw, 2rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    margin: 0 0 0.6rem;
-    color: var(--text-primary);
-  }
-  .ct-direct__sub {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    line-height: 1.55;
-    margin: 0;
-  }
-
-  .ct-direct__grid {
-    max-width: 1000px;
+  /* ════════════════════════════════════════════════════════════
+     SPLIT-SCREEN CONTACT — generative UI
+     Bold visual left + 3 compact stat pins right.
+     ════════════════════════════════════════════════════════════ */
+  .ct-direct {
+    padding: 5rem 1.5rem;
+    max-width: var(--content-width);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .ct-direct-card {
     position: relative;
-    background: var(--bg-glass);
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    border-radius: var(--radius-lg);
-    padding: 2rem 1.75rem;
-    text-align: left;
-    transition: all 0.3s var(--ease-out-expo);
-    overflow: hidden;
   }
-  .ct-direct-card::before {
+  .ct-direct::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10), transparent);
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 1px;
+    background: linear-gradient(90deg, transparent, #04a9ff, transparent);
   }
-  .ct-direct-card__top {
+  .ct-direct__split {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── Visual side ── */
+  .ct-direct__visual {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.25rem;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    max-width: 360px;
+    margin: 0 auto;
   }
-  .ct-direct-card__icon {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: rgba(4, 169, 255, 0.1);
-    border: 1px solid rgba(4, 169, 255, 0.2);
+  .ct-direct__visual-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(4, 169, 255, 0.12), transparent 70%);
+    border: 1px solid rgba(4, 169, 255, 0.15);
+    animation: ctVisPulse 4s ease-in-out infinite;
+  }
+  .ct-direct__visual-ring:nth-child(2) {
+    inset: 12%;
+    background: radial-gradient(circle at 50% 50%, rgba(4, 169, 255, 0.08), transparent 70%);
+    animation-delay: 0.3s;
+  }
+  .ct-direct__visual-ring:nth-child(3) {
+    inset: 24%;
+    background: radial-gradient(circle at 50% 50%, rgba(4, 169, 255, 0.04), transparent 70%);
+    animation-delay: 0.6s;
+  }
+  @keyframes ctVisPulse {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50%      { transform: scale(1.04); opacity: 1; }
+  }
+  .ct-direct__visual-icon {
+    position: relative;
+    z-index: 2;
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(4, 169, 255, 0.2), rgba(4, 169, 255, 0.05));
+    border: 1px solid rgba(4, 169, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: #04a9ff;
+    box-shadow: 0 0 30px rgba(4, 169, 255, 0.15);
+    animation: ctIconFloat 3s ease-in-out infinite;
+  }
+  @keyframes ctIconFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+
+  /* ── Stat pins side ── */
+  .ct-direct__stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .ct-direct__pin {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg-glass);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: var(--radius-md);
+    transition: all 0.25s var(--ease-out-expo);
+  }
+  .ct-direct__pin:hover {
+    transform: translateX(4px);
+    border-color: rgba(4, 169, 255, 0.25);
+    background: var(--bg-glass-hover);
+  }
+  .ct-direct__pin-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.6);
+    animation: ctPinBlink 2s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  .ct-direct__pin:nth-child(2) .ct-direct__pin-dot { animation-delay: 0.3s; }
+  .ct-direct__pin:nth-child(3) .ct-direct__pin-dot { animation-delay: 0.6s; }
+  @keyframes ctPinBlink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+  }
+  .ct-direct__pin-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    background: rgba(4, 169, 255, 0.08);
+    border: 1px solid rgba(4, 169, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #04a9ff;
-    font-size: 1.1rem;
+    font-size: 0.85rem;
+    flex-shrink: 0;
   }
-  .ct-direct-card__status {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
-    font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-    text-transform: uppercase;
+  .ct-direct__pin-text {
+    flex: 1;
   }
-  .ct-direct-card__status .led {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: #4ade80;
-    box-shadow: 0 0 6px rgba(74, 222, 128, 0.7);
-    animation: ctLedPulse 2.4s ease-in-out infinite;
-  }
-  .ct-direct-card__label {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    margin: 0 0 0.5rem;
-  }
-  .ct-direct-card__value {
-    font-size: 1.1rem;
-    font-weight: 600;
+  .ct-direct__pin-label {
+    font-size: 0.88rem;
+    font-weight: 500;
     color: var(--text-primary);
     letter-spacing: -0.01em;
-    margin: 0 0 0.5rem;
-    word-break: break-word;
   }
-  .ct-direct-card__meta {
-    font-family: var(--font-mono, "SF Mono", "Monaco", monospace);
-    font-size: 0.65rem;
+  .ct-direct__pin-meta {
+    font-size: 0.72rem;
     color: var(--text-muted);
-    letter-spacing: 0.06em;
-    margin: 0 0 0.75rem;
-  }
-  .ct-direct-card__note {
-    font-size: 0.78rem;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin: 0;
-  }
-  .ct-direct-card__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    margin-top: 1rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #04a9ff;
-    letter-spacing: 0.04em;
-    text-decoration: none !important;
-  }
-  .ct-direct-card__link i { transition: transform 0.2s var(--ease-out-expo); }
-  .ct-direct-card__link:hover i { transform: translateX(3px); }
-  .ct-direct-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(4, 169, 255, 0.25);
-    background: var(--bg-glass-hover);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.02em;
+    margin-top: 0.1rem;
   }
 
   /* ════════════════════════════════════════════════════════════
@@ -1017,7 +1023,7 @@ classes: contact-page
     .ct-brief__step-label { display: none; }
     .ct-brief__body { padding: 1rem 1.5rem 0.5rem; min-height: 320px; }
     .ct-brief__foot { padding: 1.25rem 1.5rem 1.5rem; }
-    .ct-direct__grid { grid-template-columns: 1fr; max-width: 480px; }
+    .ct-direct__split { grid-template-columns: 1fr; max-width: 480px; }
     .ct-tl-track {
       grid-template-columns: 1fr;
       gap: 1.5rem;
@@ -1052,15 +1058,16 @@ classes: contact-page
       CONTACT
     </div>
     <h1 class="ct-reveal">
-      Tell us about <span class="gold">the night.</span>
+      Say <span class="gold" style="font-style:italic;">hi.</span>
     </h1>
     <div class="ct-hero__ctas ct-reveal">
       <a href="/photos/" class="ct-btn ct-btn--primary">
+        <span class="ct-btn__arrow">←</span>
         Photos
-        <span class="ct-btn__arrow">→</span>
       </a>
       <a href="/" class="ct-btn ct-btn--ghost">
         Home
+        <span class="ct-btn__arrow">→</span>
       </a>
     </div>
   </div>
@@ -1085,10 +1092,12 @@ classes: contact-page
       </p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
         <a href="/photos/" class="ct-btn ct-btn--primary">
-          Photos <span class="ct-btn__arrow">→</span>
+          <span class="ct-btn__arrow">←</span>
+          Photos
         </a>
         <a href="/" class="ct-btn ct-btn--ghost">
           Home
+          <span class="ct-btn__arrow">→</span>
         </a>
       </div>
     </div>
@@ -1101,7 +1110,7 @@ classes: contact-page
 <section class="ct-timeline" id="ct-timeline">
   <div class="ct-tl-head ct-reveal">
     <div class="ct-tl-eyebrow">What's next</div>
-    <h2 class="ct-tl-title">A reply in your inbox within 24 hours</h2>
+    <h2 class="ct-tl-title">Quick reply. Always.</h2>
   </div>
 
   <div class="ct-tl-track ct-reveal">
@@ -1129,42 +1138,45 @@ classes: contact-page
   </div>
 </section>
 
-<!-- ═══ DIRECT CONTACT ═══ -->
+<!-- ═══ SPLIT-SCREEN CONTACT ═══ -->
 <section class="ct-direct" id="ct-direct">
-  <div class="ct-direct__head ct-reveal">
-    <div class="ct-direct__eyebrow">What to expect</div>
-    <h2 class="ct-direct__title">Reply to us on the same platform you found this link.</h2>
-  </div>
-
-  <div class="ct-direct__grid">
-    <div class="ct-direct-card ct-reveal">
-      <div class="ct-direct-card__top">
-        <div class="ct-direct-card__icon"><i class="fas fa-comment-dots"></i></div>
+  <div class="ct-direct__split">
+    <!-- Visual side -->
+    <div class="ct-direct__visual">
+      <div class="ct-direct__visual-ring"></div>
+      <div class="ct-direct__visual-ring"></div>
+      <div class="ct-direct__visual-ring"></div>
+      <div class="ct-direct__visual-icon">
+        <i class="fas fa-comment-dots"></i>
       </div>
-      <div class="ct-direct-card__label">Reply</div>
-      <div class="ct-direct-card__value">Where you found us</div>
-      <div class="ct-direct-card__meta">Instagram · Facebook · Email · SMS</div>
-      <p class="ct-direct-card__note">Reply on the platform where you got this link. No forms.</p>
     </div>
 
-    <div class="ct-direct-card ct-reveal">
-      <div class="ct-direct-card__top">
-        <div class="ct-direct-card__icon"><i class="fas fa-clock"></i></div>
+    <!-- Stat pins -->
+    <div class="ct-direct__stats">
+      <div class="ct-direct__pin">
+        <span class="ct-direct__pin-dot"></span>
+        <div class="ct-direct__pin-icon"><i class="fas fa-reply"></i></div>
+        <div class="ct-direct__pin-text">
+          <div class="ct-direct__pin-label">Reply where you found us</div>
+          <div class="ct-direct__pin-meta">Instagram · Facebook · Email · SMS</div>
+        </div>
       </div>
-      <div class="ct-direct-card__label">Response</div>
-      <div class="ct-direct-card__value">Within 24 hours</div>
-      <div class="ct-direct-card__meta">Mon–Sat · Often same-day</div>
-      <p class="ct-direct-card__note">A real reply with a plan, price and next step.</p>
-    </div>
-
-    <div class="ct-direct-card ct-reveal">
-      <div class="ct-direct-card__top">
-        <div class="ct-direct-card__icon"><i class="fas fa-map-marker-alt"></i></div>
+      <div class="ct-direct__pin">
+        <span class="ct-direct__pin-dot"></span>
+        <div class="ct-direct__pin-icon"><i class="fas fa-clock"></i></div>
+        <div class="ct-direct__pin-text">
+          <div class="ct-direct__pin-label">Back in 24 hours</div>
+          <div class="ct-direct__pin-meta">Mon–Sat · Often same-day</div>
+        </div>
       </div>
-      <div class="ct-direct-card__label">Location</div>
-      <div class="ct-direct-card__value">Central Coast, NSW</div>
-      <div class="ct-direct-card__meta">Sydney, Newcastle, Hunter</div>
-      <p class="ct-direct-card__note">Travel fees quoted upfront if outside the Coast.</p>
+      <div class="ct-direct__pin">
+        <span class="ct-direct__pin-dot"></span>
+        <div class="ct-direct__pin-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="ct-direct__pin-text">
+          <div class="ct-direct__pin-label">Central Coast + surrounds</div>
+          <div class="ct-direct__pin-meta">Sydney · Newcastle · Hunter</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1176,12 +1188,11 @@ classes: contact-page
     <span></span><span></span><span></span><span></span><span></span>
   </div>
   <h2>Get a plan that fits.</h2>
-  <p>Reply on the platform you found this link. Tailored plan within 24 hours.</p>
-  <a href="#ct-direct" class="ct-btn ct-btn--primary">
-    Discuss
-    <span class="ct-btn__arrow">→</span>
+  <p>Tailored plan within 24 hours.</p>
+  <a href="/contact/" class="ct-btn ct-btn--primary">
+    Contact
   </a>
-  <span class="ct-cta__note">Free · No obligation · Same-day reply for most enquiries</span>
+  <span class="ct-cta__note">Free · No obligation</span>
 </section>
 
 <script>

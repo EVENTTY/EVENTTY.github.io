@@ -1,5 +1,1027 @@
----
-layout: home
-author_profile: false
-classes: landing-page
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eventty — Curated music for bars, weddings and events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ══════════════════════════════════════════════════════════════
+   EVENTTY — One-Page Pitch Deck
+   Clean, single-file, no framework. Dark theme. Rack-mount aesthetic.
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-elevated: #181822;
+  --bg-glass: rgba(255, 255, 255, 0.025);
+  --bg-glass-hover: rgba(255, 255, 255, 0.04);
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.09);
+  --text-primary: #f2f2f5;
+  --text-secondary: rgba(242, 242, 245, 0.68);
+  --text-muted: rgba(242, 242, 245, 0.32);
+  --accent: #04a9ff;
+  --accent-glow: rgba(4, 169, 255, 0.15);
+  --green: #22c55e;
+  --red: #ef4444;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Inconsolata", monospace;
+  --content-width: min(95%, 1200px);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Shared Section Styles ── */
+.ev-section {
+  padding: 5rem 1.5rem;
+  position: relative;
+}
+.ev-section--alt { background: var(--bg-secondary); }
+.ev-section__head {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+.ev-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.ev-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  box-shadow: 0 0 6px var(--green);
+  vertical-align: middle;
+}
+.ev-section__title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.ev-section__sub {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+.ev-sep {
+  max-width: 300px;
+  margin: 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.4;
+}
+
+/* ── HERO ── */
+.ev-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(4,169,255,0.12), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 100%, rgba(4,169,255,0.06), transparent 70%),
+    var(--bg-primary);
+}
+.ev-hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: url("/images/about.jpg") center 40% / cover;
+  opacity: 0.32;
+  filter: grayscale(30%) contrast(1.05);
+  animation: heroSpin 120s linear infinite;
+  z-index: 0;
+}
+@keyframes heroSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.ev-hero__inner {
+  position: relative; z-index: 1;
+  text-align: center;
+  max-width: 800px;
+}
+.ev-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.ev-hero__eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--green); border-radius: 50%;
+  box-shadow: 0 0 8px var(--green);
+}
+.ev-hero h1 {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 600; letter-spacing: -0.04em;
+  line-height: 1.05; margin-bottom: 1.25rem;
+}
+.ev-hero h1 .gold { color: var(--accent); }
+.ev-hero__sub {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary); margin-bottom: 2.5rem;
+}
+.ev-hero__ctas {
+  display: flex; gap: 0.75rem; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 3rem;
+}
+.ev-hero__scroll {
+  color: var(--text-muted); font-size: 0.78rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(4px); }
+}
+
+/* ── Trust Stats ── */
+.ev-trust {
+  display: flex; justify-content: center; gap: 3rem;
+  flex-wrap: wrap; padding: 3rem 1.5rem;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.ev-trust__stat { text-align: center; }
+.ev-trust__num { font-size: 2rem; font-weight: 700; color: var(--accent); }
+.ev-trust__label {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-muted); margin-top: 0.25rem;
+}
+
+/* ── Buttons ── */
+.ev-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.9rem 1.6rem; border-radius: var(--radius-sm);
+  font-family: var(--font-sans); font-size: 0.95rem;
+  font-weight: 600; letter-spacing: -0.01em;
+  text-decoration: none; border: 1px solid transparent;
+  cursor: pointer; transition: all 0.25s var(--ease-out-expo);
+}
+.ev-btn--primary {
+  background: var(--accent); color: #fff;
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+.ev-btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(4,169,255,0.25);
+}
+.ev-btn--ghost {
+  background: transparent; color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+.ev-btn--ghost:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Music Cards ── */
+.ev-music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-music-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  text-decoration: none; color: inherit;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.ev-music-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  background: var(--bg-glass-hover);
+  box-shadow: 0 12px 40px rgba(4,169,255,0.06);
+}
+.ev-music-card h3 {
+  font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem;
+}
+.ev-music-card p { font-size: 0.88rem; color: var(--text-secondary); }
+.ev-music-card__tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 0.62rem;
+  font-weight: 600; letter-spacing: 0.1em;
+  color: var(--accent); margin-top: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(4,169,255,0.08);
+  border-radius: 4px;
+}
+
+/* ── Venue Cards ── */
+.ev-venue-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-venue-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.ev-venue-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.ev-venue-card__num {
+  font-family: var(--font-mono); font-size: 0.68rem;
+  color: var(--accent); letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+.ev-venue-card h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+.ev-venue-card p { font-size: 0.88rem; color: var(--text-secondary); }
+
+/* ── Compare Cards ── */
+.ev-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-compare-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+}
+.ev-compare-card--highlight {
+  border-color: rgba(4,169,255,0.35);
+  background: radial-gradient(ellipse 70% 30% at 50% 0%, rgba(4,169,255,0.06), transparent 70%), var(--bg-glass);
+  box-shadow: 0 0 0 1px rgba(4,169,255,0.12), 0 8px 32px rgba(4,169,255,0.05);
+}
+.ev-compare-card__label {
+  font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.ev-compare-card--highlight .ev-compare-card__label { color: #fff; }
+.ev-compare-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.ev-compare-card li {
+  display: flex; align-items: center; gap: 0.55rem;
+  font-size: 0.88rem; color: var(--text-secondary); line-height: 1.35;
+}
+.ev-compare-card li::before {
+  content: ""; flex-shrink: 0;
+  width: 18px; height: 18px; border-radius: 50%;
+  font-size: 0.65rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.ev-compare-card li.yes { color: var(--text-primary); }
+.ev-compare-card li.yes::before { content: "✓"; background: rgba(34,197,94,0.12); color: #22c55e; }
+.ev-compare-card li.no { opacity: 0.4; }
+.ev-compare-card li.no::before { content: "—"; background: rgba(255,255,255,0.04); color: var(--text-muted); }
+.ev-compare-card li.maybe { opacity: 0.55; }
+.ev-compare-card li.maybe::before { content: "?"; background: rgba(251,191,36,0.1); color: #fbbf24; }
+
+/* ── Logo Grid ── */
+.ev-logos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-logo-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.5rem; min-height: 140px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.ev-logo-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(4,169,255,0.05);
+}
+.ev-logo-card img {
+  max-width: 100%; max-height: 60px;
+  object-fit: contain; filter: grayscale(100%) brightness(1.4);
+  transition: filter 0.3s;
+}
+.ev-logo-card:hover img { filter: grayscale(0%) brightness(1); }
+
+/* ── Artist Grid ── */
+.ev-artists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-artist-card {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.ev-artist-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+.ev-artist-card__img {
+  width: 100%; height: 200px;
+  object-fit: cover; background: var(--bg-elevated);
+}
+.ev-artist-card__body {
+  padding: 1.25rem;
+}
+.ev-artist-card h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.25rem; }
+.ev-artist-card p { font-size: 0.82rem; color: var(--text-secondary); }
+
+/* ── Genre Spectrum ── */
+.ev-genre-grid {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center; max-width: var(--content-width); margin: 0 auto 2.5rem;
+}
+.ev-genre-chip {
+  padding: 0.65rem 1.1rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  font-size: 0.82rem; color: var(--text-secondary);
+  cursor: pointer; transition: all 0.25s var(--ease-out-expo);
+  font-family: var(--font-sans);
+}
+.ev-genre-chip:hover, .ev-genre-chip.is-active {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(4,169,255,0.06);
+}
+.ev-genre-info {
+  max-width: 560px; margin: 0 auto; text-align: center;
+  min-height: 60px;
+}
+.ev-genre-info h4 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.25rem; }
+.ev-genre-info p { font-size: 0.88rem; color: var(--text-secondary); }
+
+/* ── Builder ── */
+.ev-builder {
+  max-width: 700px; margin: 0 auto;
+}
+.ev-builder__panel {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+.ev-builder__panel-head {
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 1.5rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.ev-builder__brand {
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.1em;
+}
+.ev-builder__led {
+  display: flex; align-items: center; gap: 0.4rem;
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 0.62rem;
+  color: var(--green); letter-spacing: 0.1em;
+}
+.ev-builder__led-dot {
+  width: 7px; height: 7px; background: var(--green);
+  border-radius: 50%; box-shadow: 0 0 8px var(--green);
+}
+.ev-builder__control {
+  margin-bottom: 1.5rem;
+}
+.ev-builder__label {
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-secondary); margin-bottom: 0.75rem;
+}
+.ev-builder__value {
+  font-family: var(--font-mono); font-size: 1.5rem;
+  color: var(--accent);
+}
+.ev-builder input[type="range"] {
+  width: 100%; height: 6px;
+  -webkit-appearance: none; appearance: none;
+  background: var(--border-medium); border-radius: 3px;
+  outline: none;
+}
+.ev-builder input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px; height: 22px;
+  background: var(--accent); border-radius: 50%;
+  cursor: pointer; box-shadow: 0 0 12px var(--accent-glow);
+}
+.ev-builder__ticks {
+  display: flex; justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.7rem; color: var(--text-muted);
+}
+.ev-builder__chips {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.ev-chip {
+  padding: 0.5rem 0.9rem;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-size: 0.78rem; color: var(--text-secondary);
+  cursor: pointer; transition: all 0.2s;
+  font-family: var(--font-sans);
+}
+.ev-chip:hover, .ev-chip.is-on {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(4,169,255,0.08);
+}
+.ev-builder__manifest {
+  display: flex; flex-direction: column; gap: 0.5rem;
+}
+.ev-manifest-item {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.82rem; color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+}
+.ev-manifest-item i { color: var(--accent); width: 16px; text-align: center; }
+.ev-manifest-item__count {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--text-muted);
+}
+.ev-builder__cta {
+  display: block; text-align: center; margin-top: 1.25rem;
+  font-size: 0.78rem; color: var(--text-muted);
+}
+
+/* ── Photos Strip ── */
+.ev-photo-strip {
+  display: flex; gap: 1rem; justify-content: center;
+  flex-wrap: wrap; max-width: var(--content-width); margin: 0 auto;
+}
+.ev-photo-thumb {
+  position: relative; cursor: pointer;
+  border-radius: var(--radius-md); overflow: hidden;
+  border: 2px solid transparent;
+  transition: all 0.3s var(--ease-out-expo);
+}
+.ev-photo-thumb:hover { border-color: var(--accent); }
+.ev-photo-thumb img {
+  width: 300px; height: 200px; object-fit: cover;
+  display: block; background: var(--bg-elevated);
+}
+.ev-photo-thumb__num {
+  position: absolute; top: 0.5rem; left: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(0,0,0,0.7); border-radius: 4px;
+  color: var(--accent);
+}
+
+/* ── Lightbox ── */
+.ev-lightbox {
+  display: none; position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.92);
+  align-items: center; justify-content: center;
+}
+.ev-lightbox.is-open { display: flex; }
+.ev-lightbox img { max-width: 90vw; max-height: 85vh; border-radius: var(--radius-md); }
+.ev-lightbox__close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: none; border: none; color: #fff;
+  font-size: 1.5rem; cursor: pointer;
+}
+.ev-lightbox__nav {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  background: rgba(255,255,255,0.1); border: none;
+  color: #fff; font-size: 1.5rem; padding: 1rem;
+  cursor: pointer; border-radius: var(--radius-sm);
+}
+.ev-lightbox__nav--prev { left: 1.5rem; }
+.ev-lightbox__nav--next { right: 1.5rem; }
+
+/* ── Contact ── */
+.ev-contact {
+  padding: 6rem 1.5rem; text-align: center;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(4,169,255,0.06), transparent 70%),
+    var(--bg-primary);
+}
+.ev-contact h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600; letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+.ev-contact h1 .gold { color: var(--accent); }
+.ev-contact__sub {
+  color: var(--text-secondary); margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+.ev-contact__ctas {
+  display: flex; gap: 0.75rem; justify-content: center;
+  flex-wrap: wrap; margin-bottom: 4rem;
+}
+.ev-contact__brand {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.72rem;
+  color: var(--accent); letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.ev-contact__led {
+  width: 7px; height: 7px; background: var(--red);
+  border-radius: 50%; box-shadow: 0 0 8px var(--red);
+}
+
+/* ── Brief (Offline) ── */
+.ev-brief {
+  padding: 4rem 1.5rem; background: var(--bg-secondary);
+}
+.ev-brief__panel {
+  max-width: 600px; margin: 0 auto; text-align: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2rem;
+}
+.ev-brief__led { width: 10px; height: 10px; background: var(--red); border-radius: 50%; margin: 0 auto 1.5rem; box-shadow: 0 0 12px rgba(239,68,68,0.4); }
+.ev-brief h3 { font-size: 1.3rem; margin-bottom: 0.75rem; }
+.ev-brief p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+.ev-brief__btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .ev-compare-grid { grid-template-columns: 1fr; }
+  .ev-logos { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .ev-section { padding: 3.5rem 1rem; }
+  .ev-hero { padding: 3rem 1rem; }
+  .ev-hero h1 { font-size: 2.2rem; }
+  .ev-logos { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .ev-logo-card { min-height: 100px; padding: 1rem; }
+  .ev-trust { gap: 1.5rem; }
+  .ev-trust__num { font-size: 1.5rem; }
+  .ev-photo-thumb img { width: 220px; height: 150px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="ev-hero" id="top">
+  <div class="ev-hero__inner">
+    <div class="ev-hero__eyebrow">
+      <span class="ev-hero__eyebrow-dot"></span> Now booking
+    </div>
+    <h1><span class="gold">Elevate</span><br>your venue.</h1>
+    <p class="ev-hero__sub">Curated music for bars, weddings and events.</p>
+    <div class="ev-hero__ctas">
+      <a href="#compare" class="ev-btn ev-btn--primary">See how we compare</a>
+      <a href="#contact" class="ev-btn ev-btn--ghost">Get in touch</a>
+    </div>
+    <div class="ev-hero__scroll">Scroll</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ TRUST STATS ═══════════════════════ -->
+<div class="ev-trust">
+  <div class="ev-trust__stat">
+    <div class="ev-trust__num">12+</div>
+    <div class="ev-trust__label">Years</div>
+  </div>
+  <div class="ev-trust__stat">
+    <div class="ev-trust__num">500+</div>
+    <div class="ev-trust__label">Events</div>
+  </div>
+  <div class="ev-trust__stat">
+    <div class="ev-trust__num">50+</div>
+    <div class="ev-trust__label">Venues</div>
+  </div>
+  <div class="ev-trust__stat">
+    <div class="ev-trust__num">100%</div>
+    <div class="ev-trust__label">Insured</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ MUSIC ═══════════════════════ -->
+<section class="ev-section" id="music">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Music</div>
+    <h2 class="ev-section__title">Adapted to fit the room.</h2>
+    <p class="ev-section__sub">Every event type gets a different approach. Volume, energy, and track selection matched to the space and the crowd.</p>
+  </div>
+  <div class="ev-music-grid">
+    <a href="#" class="ev-music-card">
+      <h3>Bars &amp; Venues</h3>
+      <p>Sound that lifts the room without drowning conversation.</p>
+      <span class="ev-music-card__tag">MOST-BOOKED</span>
+    </a>
+    <a href="#" class="ev-music-card">
+      <h3>Weddings</h3>
+      <p>Curated from the aisle to the last dance.</p>
+      <span class="ev-music-card__tag">200+ WEDDINGS</span>
+    </a>
+    <a href="#" class="ev-music-card">
+      <h3>Private Parties</h3>
+      <p>Birthdays, engagements, milestones.</p>
+      <span class="ev-music-card__tag">ALL AGES</span>
+    </a>
+    <a href="#" class="ev-music-card">
+      <h3>Corporate</h3>
+      <p>Launches, galas and functions on brand.</p>
+      <span class="ev-music-card__tag">FULLY INSURED</span>
+    </a>
+    <a href="#" class="ev-music-card">
+      <h3>Special Events</h3>
+      <p>Festivals, fundraisers and one-offs.</p>
+      <span class="ev-music-card__tag">ANY SCALE</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════ VENUES ═══════════════════════ -->
+<section class="ev-section ev-section--alt" id="venues">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Venues</div>
+    <h2 class="ev-section__title">Designed for hospitality.</h2>
+    <p class="ev-section__sub">Venues built on atmosphere and sound.</p>
+  </div>
+  <div class="ev-venue-grid">
+    <div class="ev-venue-card">
+      <div class="ev-venue-card__num">01</div>
+      <h4>Cocktail Bars</h4>
+      <p>Low-key sets that let the room breathe. Volume rises with the night, never jumps.</p>
+    </div>
+    <div class="ev-venue-card">
+      <div class="ev-venue-card__num">02</div>
+      <h4>Restaurants</h4>
+      <p>Dinner-and-drinks pacing. Background early, foreground late. No jarring transitions.</p>
+    </div>
+    <div class="ev-venue-card">
+      <div class="ev-venue-card__num">03</div>
+      <h4>Themed Venues</h4>
+      <p>From tiki bars to speakeasies. Music matched to the concept, not just the room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ COMPARE ═══════════════════════ -->
+<section class="ev-section" id="compare">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Compare</div>
+    <h2 class="ev-section__title">What sets us apart.</h2>
+    <p class="ev-section__sub">Not all music is the same at 9pm and 11pm. Here's how we approach it.</p>
+  </div>
+  <div class="ev-compare-grid">
+    <div class="ev-compare-card">
+      <div class="ev-compare-card__label">Playlist</div>
+      <ul>
+        <li class="no">Reads the room</li>
+        <li class="no">Adjusts volume</li>
+        <li class="no">Takes requests</li>
+        <li class="no">Built-in backup</li>
+        <li class="no">Public liability</li>
+        <li class="maybe">Saves your vibe</li>
+        <li class="no">MC / announcements</li>
+        <li class="maybe">Gear included</li>
+      </ul>
+    </div>
+    <div class="ev-compare-card ev-compare-card--highlight">
+      <div class="ev-compare-card__label">Eventty</div>
+      <ul>
+        <li class="yes">Reads the room</li>
+        <li class="yes">Adjusts volume</li>
+        <li class="yes">Takes requests</li>
+        <li class="yes">Built-in backup</li>
+        <li class="yes">Public liability</li>
+        <li class="yes">Saves your vibe</li>
+        <li class="yes">MC / announcements</li>
+        <li class="yes">Gear included</li>
+      </ul>
+    </div>
+    <div class="ev-compare-card">
+      <div class="ev-compare-card__label">Other DJ</div>
+      <ul>
+        <li class="maybe">Reads the room</li>
+        <li class="maybe">Adjusts volume</li>
+        <li class="yes">Takes requests</li>
+        <li class="no">Built-in backup</li>
+        <li class="maybe">Public liability</li>
+        <li class="no">Saves your vibe</li>
+        <li class="no">MC / announcements</li>
+        <li class="maybe">Gear included</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ BRANDS & VENUES ═══════════════════════ -->
+<section class="ev-section ev-section--alt" id="brands">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Trusted by</div>
+    <h2 class="ev-section__title">Brands and Venues</h2>
+    <p class="ev-section__sub">Venues and brands that regularly book live music through Eventty.</p>
+  </div>
+  <div class="ev-logos">
+    <div class="ev-logo-card"><img src="/images/terrigal-beach-house.png" alt="Terrigal Beach House" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://images.squarespace-cdn.com/content/v1/68f0356b07218143351eb035/ec64e6f7-8b66-4edc-afd9-091a3d20f340/Main+Logo+Transparent.png?format=2500w" alt="Woodport Hotel" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="/images/terrigal-hotel.png" alt="Terrigal Hotel" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://www.bateaubayhotel.com.au/images/BBH-Logo-Green.avif" alt="Bateau Bay Hotel" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://cdn.prod.website-files.com/60efb8fbbca80e2406e63ea5/60f52101e304a23e7c54c097_SIRENS-LOGO-HORIZONTAL-SML-GOLD.svg" alt="Sirens The Nightclub" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://mumbojumbos.com.au/wp-content/uploads/2019/12/Mumbo-Jumbos-logo.svg" alt="Mumbo Jumbos" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://mcprod2.yd.com.au/media/og_image/websites/19/opengraph-logo.jpeg" alt="yd. Australia" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="/images/2.jpg" alt="Anytime Fitness" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="/images/clipnclimb.png" alt="Clip 'N Climb Central Coast" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://sydneymumsonthecentralcoast.com.au/wp-content/uploads/2019/06/Narara-Valley-High-School-300x300.png" alt="Narara Valley High School" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="/images/5.jpg" alt="St Joseph's & St Edward's" loading="lazy"></div>
+    <div class="ev-logo-card"><img src="https://tmcricket.com/wp-content/uploads/tmcc-80-years-logo-2.png" alt="Terrigal Matcham Cricket Club" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ INTERNATIONAL ARTISTS ═══════════════════════ -->
+<section class="ev-section" id="artists">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Supporting</div>
+    <h2 class="ev-section__title">International Artists</h2>
+    <p class="ev-section__sub">Artists Eventty has supported as a local opener or warm-up DJ.</p>
+  </div>
+  <div class="ev-artists">
+    <div class="ev-artist-card">
+      <img class="ev-artist-card__img" src="/images/7.jpg" alt="Jason Derulo" loading="lazy">
+      <div class="ev-artist-card__body">
+        <h4>Jason Derulo</h4>
+        <p>Pop · Hip Hop · R&amp;B</p>
+      </div>
+    </div>
+    <div class="ev-artist-card">
+      <img class="ev-artist-card__img" src="/images/8.png" alt="IYAZ" loading="lazy">
+      <div class="ev-artist-card__body">
+        <h4>IYAZ</h4>
+        <p>Pop · R&amp;B · Reggae</p>
+      </div>
+    </div>
+    <div class="ev-artist-card">
+      <img class="ev-artist-card__img" src="/images/9.jpg" alt="Gorillaz" loading="lazy">
+      <div class="ev-artist-card__body">
+        <h4>Gorillaz</h4>
+        <p>DJ Set · Ivy Sydney</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ GENRE SPECTRUM ═══════════════════════ -->
+<section class="ev-section ev-section--alt" id="genres">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Genres</div>
+    <h2 class="ev-section__title">From lounge-warm to peak-hour dancefloor.</h2>
+    <p class="ev-section__sub">Every set is built around the room — tap a genre to preview the vibe.</p>
+  </div>
+  <div class="ev-genre-grid" id="genre-grid"></div>
+  <div class="ev-genre-info" id="genre-info">
+    <h4>Lounge &amp; dinner</h4>
+    <p>Acoustic and soft-electronica. Volume matched to conversation.</p>
+  </div>
+  <div class="ev-sep" style="margin-top: 2rem;"></div>
+</section>
+
+<!-- ═══════════════════════ BUILD YOUR EVENT ═══════════════════════ -->
+<section class="ev-section" id="builder">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Configure</div>
+    <h2 class="ev-section__title">Build your event.</h2>
+    <p class="ev-section__sub">Slide to your event size to see recommended gear and coverage.</p>
+  </div>
+  <div class="ev-builder">
+    <div class="ev-builder__panel">
+      <div class="ev-builder__panel-head">
+        <span class="ev-builder__brand">EVT-CFG-01</span>
+        <span class="ev-builder__led"><span class="ev-builder__led-dot"></span> LIVE</span>
+      </div>
+      <div class="ev-builder__control">
+        <div class="ev-builder__label">
+          <span>Guest count</span>
+          <span class="ev-builder__value" id="guest-count">150</span>
+        </div>
+        <input type="range" id="guest-slider" min="50" max="800" value="150" step="10">
+        <div class="ev-builder__ticks">
+          <span>50</span><span>200</span><span>400</span><span>600</span><span>800+</span>
+        </div>
+      </div>
+      <div class="ev-builder__label"><span>Add-ons</span></div>
+      <div class="ev-builder__chips" id="addon-chips">
+        <button class="ev-chip" data-addon="lighting"><i class="fas fa-lightbulb"></i> Dancefloor lighting</button>
+        <button class="ev-chip" data-addon="mics"><i class="fas fa-microphone"></i> Extra wireless mics</button>
+        <button class="ev-chip" data-addon="mc"><i class="fas fa-user-tie"></i> Dedicated MC</button>
+        <button class="ev-chip" data-addon="backup"><i class="fas fa-shield-alt"></i> Full backup gear</button>
+        <button class="ev-chip" data-addon="production"><i class="fas fa-sliders-h"></i> Full production</button>
+      </div>
+      <div class="ev-builder__label"><span>Equipment manifest</span></div>
+      <div class="ev-builder__manifest" id="gear-manifest"></div>
+      <div class="ev-builder__cta">Free consultation · No obligation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ PHOTOS ═══════════════════════ -->
+<section class="ev-section ev-section--alt" id="photos">
+  <div class="ev-section__head">
+    <div class="ev-eyebrow">Photos</div>
+    <h2 class="ev-section__title">Browse frames.</h2>
+    <p class="ev-section__sub">Click any frame to view full-size.</p>
+  </div>
+  <div class="ev-photo-strip" id="photo-strip">
+    <div class="ev-photo-thumb" data-index="0" data-src="/images/gallery-3.jpg">
+      <img src="/images/gallery-3.jpg" alt="Event photo 1" loading="lazy">
+      <span class="ev-photo-thumb__num">01</span>
+    </div>
+    <div class="ev-photo-thumb" data-index="1" data-src="/images/gallery-2.jpg">
+      <img src="/images/gallery-2.jpg" alt="Event photo 2" loading="lazy">
+      <span class="ev-photo-thumb__num">02</span>
+    </div>
+    <div class="ev-photo-thumb" data-index="2" data-src="/images/gallery-1.jpg">
+      <img src="/images/gallery-1.jpg" alt="Event photo 3" loading="lazy">
+      <span class="ev-photo-thumb__num">03</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ LIGHTBOX ═══════════════════════ -->
+<div class="ev-lightbox" id="lightbox">
+  <button class="ev-lightbox__close" id="lb-close">&times;</button>
+  <button class="ev-lightbox__nav ev-lightbox__nav--prev" id="lb-prev">&lsaquo;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="ev-lightbox__nav ev-lightbox__nav--next" id="lb-next">&rsaquo;</button>
+</div>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section class="ev-contact" id="contact">
+  <div class="ev-contact__brand">
+    EVT-CT-01 &nbsp;<span class="ev-contact__led"></span>&nbsp; ONLINE
+  </div>
+  <h1>Let's <span class="gold">talk.</span></h1>
+  <p class="ev-contact__sub">Free consultation · No obligation · 15 minutes</p>
+  <div class="ev-contact__ctas">
+    <a href="mailto:hello@eventty.org" class="ev-btn ev-btn--primary">Start a brief <span style="margin-left:0.5rem">→</span></a>
+    <a href="mailto:hello@eventty.org" class="ev-btn ev-btn--ghost">Email directly</a>
+  </div>
+  <div class="ev-sep" style="margin-bottom: 4rem;"></div>
+</section>
+
+<!-- ═══════════════════════ BRIEF (OFFLINE) ═══════════════════════ -->
+<section class="ev-brief" id="brief">
+  <div class="ev-brief__panel">
+    <div class="ev-brief__led"></div>
+    <h3>Brief currently offline.</h3>
+    <p>Reply on the platform where you found this link, or email directly.</p>
+    <div class="ev-brief__btns">
+      <a href="#top" class="ev-btn ev-btn--primary"><span>↑</span> Back to top</a>
+      <a href="mailto:hello@eventty.org" class="ev-btn ev-btn--ghost">Email <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ SCRIPTS ═══════════════════════ -->
+<script>
+/* ── Genre Spectrum ── */
+const genres = {
+  lounge:  { name: "Lounge & dinner",      desc: "Acoustic and soft-electronica. Volume matched to conversation." },
+  soul:    { name: "Soul & Motown",        desc: "Al Green, Stevie, early Motown. Civilised rooms, warm energy." },
+  disco:   { name: "Disco & funk",         desc: "Salsoul, early disco, French touch, modern funk." },
+  indie:   { name: "Indie & alt",          desc: "Modern indie and alternative. Known songs, good energy." },
+  house:   { name: "House",                desc: "Deep house, disco house, tech-lite. Steady and danceable." },
+  pop:     { name: "Pop & Top 40",         desc: "Current hits and party classics. Songs your guests know." },
+  rnb:     { name: "R&B",                  desc: "Old-school R&B, neo-soul, slow-burn ballads." },
+  hiphop:  { name: "Hip Hop",              desc: "Old-school essentials, golden-era classics, modern hits. Clean edits." },
+  latin:   { name: "Latin & reggaeton",    desc: "Salsa, reggaeton, Brazilian. For venues that already lean Latin." },
+  peak:    { name: "Peak & dancefloor",    desc: "High-energy pop, house, throwbacks. The closing-hour set." }
+};
+
+const grid = document.getElementById("genre-grid");
+const info = document.getElementById("genre-info");
+let activeGenre = "lounge";
+
+Object.entries(genres).forEach(([key, g]) => {
+  const btn = document.createElement("button");
+  btn.className = "ev-genre-chip" + (key === activeGenre ? " is-active" : "");
+  btn.textContent = g.name;
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".ev-genre-chip").forEach(b => b.classList.remove("is-active"));
+    btn.classList.add("is-active");
+    activeGenre = key;
+    info.innerHTML = `<h4>${g.name}</h4><p>${g.desc}</p>`;
+  });
+  grid.appendChild(btn);
+});
+
+/* ── Builder ── */
+const slider = document.getElementById("guest-slider");
+const guestDisplay = document.getElementById("guest-count");
+const manifest = document.getElementById("gear-manifest");
+const chips = document.querySelectorAll(".ev-chip");
+
+const baseGear = {
+  50:  [{ icon: "fa-volume-up", label: "2× QSC K10.2 speakers", count: 1 }, { icon: "fa-sliders-h", label: "Allen & Heath mixer", count: 1 }, { icon: "fa-microphone", label: "Wireless mic (handheld)", count: 1 }],
+  150: [{ icon: "fa-volume-up", label: "2× QSC K12.2 speakers", count: 1 }, { icon: "fa-sliders-h", label: "Allen & Heath mixer", count: 1 }, { icon: "fa-microphone", label: "Wireless mic (handheld)", count: 1 }, { icon: "fa-lightbulb", label: "Basic wash lighting", count: 1 }],
+  300: [{ icon: "fa-volume-up", label: "2× QSC K12.2 + 1× KS118 sub", count: 1 }, { icon: "fa-sliders-h", label: "Pioneer DJM + CDJs", count: 1 }, { icon: "fa-microphone", label: "2× wireless mics", count: 1 }, { icon: "fa-lightbulb", label: "Uplighting + dancefloor wash", count: 1 }],
+  500: [{ icon: "fa-volume-up", label: "2× QSC K12.2 + 2× KS118 subs", count: 1 }, { icon: "fa-sliders-h", label: "Pioneer DJM + CDJs", count: 1 }, { icon: "fa-microphone", label: "2× wireless + 1× headset", count: 1 }, { icon: "fa-lightbulb", label: "Full lighting rig", count: 1 }],
+  800: [{ icon: "fa-volume-up", label: "4× QSC KLA12 line array", count: 1 }, { icon: "fa-sliders-h", label: "Pioneer V10 + CDJ-3000s", count: 1 }, { icon: "fa-microphone", label: "3× wireless + MC headset", count: 1 }, { icon: "fa-lightbulb", label: "Production-grade lighting", count: 1 }, { icon: "fa-headphones", label: "Dedicated sound engineer", count: 1 }]
+};
+
+function getAddons() {
+  const addons = [];
+  chips.forEach(c => { if (c.classList.contains("is-on")) addons.push(c.dataset.addon); });
+  return addons;
+}
+
+const addonGear = {
+  lighting: [{ icon: "fa-lightbulb", label: "Additional moving heads", count: 2 }],
+  mics: [{ icon: "fa-microphone", label: "Extra wireless mic kit", count: 1 }],
+  mc: [{ icon: "fa-user-tie", label: "Dedicated MC service", count: 1 }],
+  backup: [{ icon: "fa-shield-alt", label: "Full redundant backup system", count: 1 }],
+  production: [{ icon: "fa-sliders-h", label: "Full production package", count: 1 }, { icon: "fa-headphones", label: "Sound engineer", count: 1 }]
+};
+
+function updateManifest() {
+  const val = parseInt(slider.value);
+  guestDisplay.textContent = val;
+  const tier = Object.keys(baseGear).map(Number).sort((a,b) => a-b).find(t => val <= t) || 800;
+  let items = [...baseGear[tier].map(i => ({...i}))];
+  getAddons().forEach(a => {
+    if (addonGear[a]) items.push(...addonGear[a].map(i => ({...i})));
+  });
+  manifest.innerHTML = items.map(item =>
+    `<div class="ev-manifest-item">
+      <i class="fas ${item.icon}"></i> ${item.label}
+      <span class="ev-manifest-item__count">×${item.count}</span>
+    </div>`
+  ).join("");
+}
+
+slider.addEventListener("input", updateManifest);
+chips.forEach(c => {
+  c.addEventListener("click", () => { c.classList.toggle("is-on"); updateManifest(); });
+});
+updateManifest();
+
+/* ── Photo Lightbox ── */
+const lightbox = document.getElementById("lightbox");
+const lbImg = document.getElementById("lb-img");
+const thumbs = document.querySelectorAll(".ev-photo-thumb");
+let currentIndex = 0;
+
+thumbs.forEach(t => {
+  t.addEventListener("click", () => {
+    currentIndex = parseInt(t.dataset.index);
+    lbImg.src = t.dataset.src;
+    lightbox.classList.add("is-open");
+  });
+});
+
+document.getElementById("lb-close").addEventListener("click", () => lightbox.classList.remove("is-open"));
+document.getElementById("lb-prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + thumbs.length) % thumbs.length;
+  lbImg.src = thumbs[currentIndex].dataset.src;
+});
+document.getElementById("lb-next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % thumbs.length;
+  lbImg.src = thumbs[currentIndex].dataset.src;
+});
+lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.classList.remove("is-open"); });
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("is-open")) return;
+  if (e.key === "Escape") lightbox.classList.remove("is-open");
+  if (e.key === "ArrowLeft") document.getElementById("lb-prev").click();
+  if (e.key === "ArrowRight") document.getElementById("lb-next").click();
+});
+</script>
+</body>
+</html>
